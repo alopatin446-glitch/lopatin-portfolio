@@ -1,4 +1,4 @@
-// НАУЧНО-ИНЖЕНЕРНЫЙ ИНТЕРФЕЙС HUD v4.0 // Premium Subtle Dark Background Engine
+// КИБЕРНЕТИЧЕСКАЯ МАТРИЦА СИСТЕМЫ v5.0 // Advanced Deep Ambient Canvas Engine
 document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("cyber-background");
     if (!canvas) return;
@@ -12,97 +12,112 @@ document.addEventListener("DOMContentLoaded", () => {
         height = canvas.height = window.innerHeight;
     });
 
-    // Физика мыши с мягким доездом (инерцией)
+    // Физика курсора мыши с глубокой инерцией доезда
     let mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
     window.addEventListener("mousemove", (e) => {
         mouse.targetX = e.clientX;
         mouse.targetY = e.clientY;
     });
 
-    // Плавная инерция скролла для колесика
+    // Координаты скролла для параллакс-смещения фона
     let scrollY = 0;
     let targetScrollY = 0;
     window.addEventListener("scroll", () => {
         targetScrollY = window.scrollY;
     });
 
-    // Приглушенные Sci-Fi кольца HUD (не перегружают текст, opacity минимально)
+    // Ослабленные Sci-Fi кольца HUD (Прозрачность сведена до премиального минимума)
     const hudRings = [
-        { radius: 130, baseSpeed: 0.003, dash: [4, 16], angle: 0, color: "rgba(16, 185, 129, 0.08)", weight: 1 },
-        { radius: 260, baseSpeed: -0.0015, dash: [60, 40, 10, 40], angle: 0, color: "rgba(59, 130, 246, 0.05)", weight: 1.5 },
-        { radius: 450, baseSpeed: -0.0007, dash: [120, 120], angle: 0, color: "rgba(16, 185, 129, 0.03)", weight: 1 }
+        { radius: 140, baseSpeed: 0.002, dash: [4, 12], angle: 0, color: "rgba(16, 185, 129, 0.04)", weight: 1 },
+        { radius: 280, baseSpeed: -0.001, dash: [40, 60, 10, 30], angle: 0, color: "rgba(47, 128, 237, 0.03)", weight: 1.2 },
+        { radius: 500, baseSpeed: -0.0004, dash: [100, 150], angle: 0, color: "rgba(16, 185, 129, 0.02)", weight: 1 }
     ];
 
-    // Едва заметные вертикальные потоки байт-кода
+    // Медленные вертикальные потоки байт-кода
     const dataStreams = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 12; i++) {
         dataStreams.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            length: Math.random() * 80 + 40,
-            baseSpeed: Math.random() * 1 + 0.5,
-            opacity: Math.random() * 0.06 + 0.02
+            length: Math.random() * 120 + 60,
+            baseSpeed: Math.random() * 0.4 + 0.2,
+            opacity: Math.random() * 0.04 + 0.015
         });
     }
 
-    // ВЫСОКОТЕХНОЛОГИЧНЫЙ ЦИКЛ РЕНДЕРА
-    function render() {
-        // Базовый цвет холста (深 - Deep Black)
+    // МАТЕМАТИЧЕСКИЙ ЦИКЛ ОТРЕНДЕРИВАНИЯ ФОНА
+    function renderAmbientSystem() {
+        // Заливка базового графитового ядра
         ctx.fillStyle = "#050507";
         ctx.fillRect(0, 0, width, height);
 
-        // Интеграция плавности
-        mouse.x += (mouse.targetX - mouse.x) * 0.05;
-        mouse.y += (mouse.targetY - mouse.y) * 0.05;
-        scrollY += (targetScrollY - scrollY) * 0.07;
+        // Расчет физического затухания инерции
+        mouse.x += (mouse.targetX - mouse.x) * 0.04;
+        mouse.y += (mouse.targetY - mouse.y) * 0.04;
+        scrollY += (targetScrollY - scrollY) * 0.06;
 
-        // Расчёт параллакс-смещения (зависит от положения курсора)
-        const offsetX = (mouse.x - width / 2) * 0.02;
-        const offsetY = (mouse.y - height / 2) * 0.02;
+        // Коэффициенты смещения слоев (параллакс)
+        const offsetX = (mouse.x - width / 2) * 0.025;
+        const offsetY = (mouse.y - height / 2) * 0.025;
+        const hudScale = 1 + scrollY * 0.0005;
+        const speedBoost = 1 + scrollY * 0.002;
 
-        const scrollFactor = scrollY * 0.0008;
-        const hudScale = 1 + scrollFactor; // Плавное расширение при скролле
-        const speedBoost = 1 + scrollY * 0.004;
-
-        // 1. ОТРИСОВКА PREMIUM GLOW (Мягкие размытые световые волны на бэкграунде)
+        // 1. RADIAL GLOW LAYERS (Живой рассеянный свет)
         ctx.save();
         ctx.globalCompositeOperation = "screen";
-        
-        // Зелёное приглушенное пятно сверху слева (двигается с параллаксом медленнее контента)
-        let glow1 = ctx.createRadialGradient(width * 0.2 + offsetX * 0.5, height * 0.2 + offsetY * 0.5, 0, width * 0.2 + offsetX * 0.5, height * 0.2 + offsetY * 0.5, 350);
-        glow1.addColorStop(0, "rgba(16, 185, 129, 0.06)");
-        glow1.addColorStop(1, "transparent");
-        ctx.fillStyle = glow1;
+
+        // Левое верхнее изумрудное пятно
+        let glowEmerald = ctx.createRadialGradient(
+            width * 0.25 + offsetX * 0.4, 
+            height * 0.25 + offsetY * 0.4 - scrollY * 0.15, 
+            0, 
+            width * 0.25 + offsetX * 0.4, 
+            height * 0.25 + offsetY * 0.4 - scrollY * 0.15, 
+            450
+        );
+        glowEmerald.addColorStop(0, "rgba(16, 185, 129, 0.045)");
+        glowEmerald.addColorStop(1, "transparent");
+        ctx.fillStyle = glowEmerald;
         ctx.fillRect(0, 0, width, height);
 
-        // Синее приглушенное пятно справа по центру
-        let glow2 = ctx.createRadialGradient(width * 0.8 + offsetX * 0.3, height * 0.5 + offsetY * 0.3, 0, width * 0.8 + offsetX * 0.3, height * 0.5 + offsetY * 0.3, 400);
-        glow2.addColorStop(0, "rgba(59, 130, 246, 0.04)");
-        glow2.addColorStop(1, "transparent");
-        ctx.fillStyle = glow2;
+        // Правое центральное приглушенно-синее пятно
+        let glowMutedCyan = ctx.createRadialGradient(
+            width * 0.75 + offsetX * 0.2, 
+            height * 0.5 + offsetY * 0.2 - scrollY * 0.05, 
+            0, 
+            width * 0.75 + offsetX * 0.2, 
+            height * 0.5 + offsetY * 0.2 - scrollY * 0.05, 
+            500
+        );
+        glowMutedCyan.addColorStop(0, "rgba(47, 128, 237, 0.035)");
+        glowMutedCyan.addColorStop(1, "transparent");
+        ctx.fillStyle = glowMutedCyan;
         ctx.fillRect(0, 0, width, height);
         ctx.restore();
 
-        // 2. СВЕРХТОНКАЯ СТРУКТУРНАЯ СЕТКА (Опасити 0.03 по ТЗ)
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.012)";
-        ctx.lineWidth = 1;
-        const gridSize = 50;
+        // 2. ULTRA SUBTLE INDUSTRIAL GRID (Ультратонкая сетка 40px)
         ctx.save();
-        ctx.translate(offsetX * 0.2, offsetY * 0.2); // Пассивный параллакс сетки
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.011)";
+        ctx.lineWidth = 1;
+        const gridSize = 40;
+        
+        // Пассивный параллакс смещения сетки относительно скролла
+        ctx.translate(offsetX * 0.1, (offsetY * 0.1) - (scrollY * 0.05) % gridSize);
+        
         for (let x = 0; x < width; x += gridSize) {
-            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(x, -gridSize); ctx.lineTo(x, height + gridSize); ctx.stroke();
         }
-        for (let y = 0; y < height; y += gridSize) {
+        for (let y = -gridSize; y < height + gridSize; y += gridSize) {
             ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
         }
         ctx.restore();
 
-        // 3. МЯГКИЕ ПОТОКИ ДАННЫХ
+        // 3. МЕДЛЕННЫЕ ТЕХНИЧЕСКИЕ ПОТОКИ ДАННЫХ
         dataStreams.forEach(stream => {
             let currentSpeed = stream.baseSpeed * speedBoost;
             stream.y -= currentSpeed;
             if (stream.y + stream.length < 0) {
-                stream.y = height + Math.random() * 20;
+                stream.y = height + Math.random() * 40;
                 stream.x = Math.random() * width;
             }
             ctx.beginPath();
@@ -115,9 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.stroke();
         });
 
-        // 4. СВЯЗАННЫЕ СО СКРОЛЛОМ HUD КОЛЬЦА (Центрированные по экрану)
+        // 4. СВЯЗАННЫЕ СО СКРОЛЛОМ ЭЛЕМЕНТЫ HUD ГЛУБИНЫ
         ctx.save();
-        ctx.translate(width / 2 + offsetX * 0.8, height / 2 + offsetY * 0.8);
+        ctx.translate(width / 2 + offsetX * 0.6, height / 2 + offsetY * 0.6);
         ctx.scale(hudScale, hudScale);
 
         hudRings.forEach(ring => {
@@ -134,8 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         ctx.restore();
 
-        requestAnimationFrame(render);
+        requestAnimationFrame(renderAmbientSystem);
     }
 
-    render();
+    renderAmbientSystem();
 });

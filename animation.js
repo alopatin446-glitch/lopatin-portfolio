@@ -1,87 +1,75 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. СИМУЛЯЦИЯ РАБОТЫ СИСТЕМЫ В HEADER
-    const sysCodeEl = document.getElementById("sys-code");
-    if (sysCodeEl) {
-        setInterval(() => {
-            const operations = ["CRM_LOG_PARSE", "DB_INDEX_OK", "LLM_PROMPT_SENT", "ERR_LOSS_PREVENTED", "SYS_ALIVE"];
-            const randomOp = operations[Math.floor(Math.random() * operations.length)];
-            const hex = Math.random().toString(16).substring(2, 8).toUpperCase();
-            sysCodeEl.innerText = `[${randomOp} // 0x${hex}]`;
-        }, 2500);
-    }
-
-    // 2. ИНТЕРАКТИВНЫЙ РАСЧЕТНЫЙ МОДУЛЬ (Внутри кейса мягких окон)
-    const specBlock = document.querySelector(".case-architecture-spec");
-    if (specBlock) {
-        specBlock.style.cursor = "pointer";
-        specBlock.addEventListener("mousemove", (e) => {
-            const rect = specBlock.getBoundingClientRect();
-            const x = Math.floor(e.clientX - rect.left);
-            const y = Math.floor(e.clientY - rect.top);
-            
-            let liveLine = document.getElementById("live-calc-coordinates");
-            if (!liveLine) {
-                liveLine = document.createElement("div");
-                liveLine.id = "live-calc-coordinates";
-                liveLine.style.color = "var(--accent-blue)";
-                liveLine.style.marginTop = "4px";
-                specBlock.appendChild(liveLine);
-            }
-            liveLine.innerText = `[МЫШЬ_ТРЕКИНГ] X: ${x}px // Y: ${y}px`;
-        });
-    }
-
-    // 3. SCROLL REVEAL ДЛЯ БЛОКОВ ПО ТЗ (СЕТКА + КАРТОЧКИ + МАНИФЕСТ)
-    const blocksToReveal = document.querySelectorAll('.section-block, .hero-cinematic-slide, .manifesto-block');
     
-    blocksToReveal.forEach((block, index) => {
-        block.classList.add('reveal-hidden');
-        block.style.setProperty('--stagger-delay', `${index * 0.08}s`); // Каскадный stagger запуск
-    });
-
-    // Функция запуска анимации цифр, когда они доезжают до экрана
-    function animateMetrics() {
-        const metrics = document.querySelectorAll(".metric-num");
-        metrics.forEach(metric => {
-            const finalValue = parseInt(metric.innerText);
-            if (isNaN(finalValue)) return;
-            
-            let startValue = 0;
-            const duration = 1200;
-            const stepTime = Math.max(Math.floor(duration / (finalValue / 5)), 15);
-            
-            const timer = setInterval(() => {
-                startValue += Math.ceil(finalValue / 40);
-                if (startValue >= finalValue) {
-                    metric.innerText = finalValue + "+";
-                    if (finalValue === 17 || finalValue === 24) metric.innerText = finalValue; // Без плюсов для фиксированных параметров
-                    clearInterval(timer);
-                } else {
-                    metric.innerText = startValue + "+";
-                }
-            }, stepTime);
-        });
-    }
-
-    let metricsAnimated = false;
+    // ==========================================
+    // ТИП А: СТАТИЧЕСКИ БЕЗОПАСНЫЙ CONTENT REVEAL
+    // ==========================================
+    const revealElements = document.querySelectorAll(".reveal-element");
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('reveal-visible');
-                
-                // Если в поле зрения попал профиль с метриками, триггерим счётчики один раз
-                if (entry.target.classList.contains('hero-profile') && !metricsAnimated) {
-                    animateMetrics();
-                    metricsAnimated = true;
-                }
-                observer.unobserve(entry.target);
+                entry.target.classList.add("reveal-visible");
+                observer.unobserve(entry.target); // Срабатывает строго один раз
             }
         });
     }, {
-        threshold: 0.02,
-        rootMargin: "0px 0px -30px 0px"
+        threshold: 0.05,
+        rootMargin: "0px 0px -40px 0px" // Легкое упреждение анимации
     });
 
-    blocksToReveal.forEach(block => revealObserver.observe(block));
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
+
+
+    // ==========================================
+    // ТИП Б: BACKGROUND & ARTIFACT PARALLAX MOTION
+    // (Применяется только к декоративным слоям!)
+    // ==========================================
+    
+    // Проверяем, не включен ли у пользователя режим экономии движений
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.innerWidth < 968;
+
+    if (!prefersReducedMotion && !isMobile) {
+        window.addEventListener("scroll", () => {
+            const scrolled = window.scrollY;
+
+            // 1. Параллакс фоновых сфер
+            const orbs = document.querySelectorAll(".parallax-glow-orb");
+            orbs.forEach(orb => {
+                const velocity = parseFloat(orb.getAttribute("data-velocity")) || 0.1;
+                // Двигаем только фон с помощью чистой 3D матрицы (не ломая верстку)
+                orb.style.transform = `translate3d(0, ${scrolled * velocity}px, 0)`;
+            });
+
+            // 2. Параллакс парящих UI фрагментов в Hero
+            const shards = document.querySelectorAll(".floating-ui-shard");
+            shards.forEach(shard => {
+                const velocity = parseFloat(shard.getAttribute("data-velocity")) || 0.2;
+                shard.style.transform = `translate3d(0, ${-scrolled * velocity}px, 0)`;
+            });
+        });
+        
+        // Интерактивное смещение парящих слоев от мыши (Subtle Mouse Parallax)
+        const heroScene = document.querySelector(".hero-scene");
+        if (heroScene) {
+            heroScene.addEventListener("mousemove", (e) => {
+                const { clientX, clientY } = e;
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                
+                // Вычисляем отклонение от центра экрана (-0.5 до 0.5)
+                const moveX = (clientX / width) - 0.5;
+                const moveY = (clientY / height) - 0.5;
+                
+                const shards = document.querySelectorAll(".floating-ui-shard");
+                shards.forEach((shard, index) => {
+                    const factor = (index + 1) * 10; // Степень глубины слоя
+                    shard.style.left = `calc(${shard.offsetLeft}px + ${moveX * factor}px)`;
+                    shard.style.top = `calc(${shard.offsetTop}px + ${moveY * factor}px)`;
+                });
+            });
+        }
+    }
 });
