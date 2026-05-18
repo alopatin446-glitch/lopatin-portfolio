@@ -1,9 +1,9 @@
-/* DESIGN TOKENS & SYSTEM VARIABLES */
+/* ПРАВИЛА СТИЛЕЙ И СИСТЕМНЫЕ ПЕРЕМЕННЫЕ */
 :root {
     --bg-main: #09090b;
     --bg-card: rgba(20, 20, 23, 0.6);
-    --border-glow: rgba(255, 255, 255, 0.08);
-    --border-top-glow: rgba(255, 255, 255, 0.15);
+    --border-glow: rgba(255, 255, 255, 0.04);
+    --border-top-glow: rgba(255, 255, 255, 0.08);
     --text-primary: #ffffff;
     --text-secondary: #a1a1aa;
     --text-muted: #52525b;
@@ -12,7 +12,7 @@
     --font-mono: 'Montserrat', ui-monospace, SFMono-Regular, sans-serif;
 }
 
-/* RESET & BASE STYLES */
+/* СБРОС СТИЛЕЙ И БАЗОВЫЕ НАСТРОЙКИ */
 *,
 *::before,
 *::after {
@@ -27,23 +27,23 @@ body {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     min-height: 100vh;
     line-height: 1.6;
-    padding: 40px 20px;
+    padding: 60px 20px;
     display: flex;
     justify-content: center;
     overflow-x: hidden;
     position: relative;
 }
 
-/* BACKDROP LIGHTING EFFECTS */
+/* МЯГКАЯ ФОНОВАЯ ПОДСВЕТКА СТРАНИЦЫ */
 body::before {
     content: "";
     position: absolute;
-    top: -10%;
+    top: -5%;
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.04) 0%, rgba(59, 130, 246, 0.03) 50%, transparent 100%);
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, rgba(59, 130, 246, 0.02) 60%, transparent 100%);
     z-index: 0;
     pointer-events: none;
 }
@@ -55,58 +55,44 @@ body::before {
     position: relative;
 }
 
-/* SYSTEM METRICS / TOP BAR */
+/* ВЕРХНИЙ СТАТУС-БАР */
 .sys-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 10px;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 8px;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
 }
 
-.status-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background-color: var(--accent-green);
-    border-radius: 50%;
-    margin-right: 6px;
-    box-shadow: 0 0 8px var(--accent-green);
-}
-
-/* TYPOGRAPHY */
+/* СЕТКА ТИПОГРАФИКИ */
 h1 {
     font-size: 32px;
     font-weight: 800;
-    letter-spacing: -1px;
-    line-height: 1.1;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
     margin-bottom: 12px;
 }
 
 .subtitle {
-    font-family: var(--font-mono);
     font-size: 13px;
     color: var(--accent-blue);
     font-weight: 600;
     line-height: 1.4;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 40px;
 }
 
 h2.section-title {
-    font-size: 12px;
+    font-size: 11px;
     font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     color: var(--text-muted);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
 }
@@ -119,272 +105,95 @@ h2.section-title::after {
     margin-left: 12px;
 }
 
-.about-text {
-    font-size: 15px;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-}
-
 .section-block {
-    margin-bottom: 48px;
+    margin-bottom: 56px;
 }
 
-/* LISTS (BULLS) */
-.bullet-list {
-    list-style: none;
-    padding: 0;
-}
-
-.bullet-item {
-    font-size: 14px;
-    color: var(--text-secondary);
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 12px;
-    line-height: 1.5;
-}
-
-.bullet-item::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: var(--text-muted);
-}
-
-.useful-list .bullet-item::before {
-    color: var(--accent-blue);
-}
-
-/* CARDS */
-.case-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-glow);
-    border-top: 1px solid var(--border-top-glow);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.case-card:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-.case-tag {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    display: block;
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
-}
-
-.case-title {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-    line-height: 1.3;
-}
-
-.case-desc {
-    font-size: 13.5px;
-    color: var(--text-secondary);
-    line-height: 1.5;
-}
-
-/* TOOLS BADGES */
-.tools-grid {
+/* ГЛАВНЫЙ КОМПОНЕНТ (HERO) */
+.profile-meta-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.tool-badge {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 4px;
-    padding: 4px 10px;
-    font-size: 12px;
-    color: var(--text-secondary);
-}
-
-/* STATEMENT MANIFESTO */
-.manifesto-block {
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
-    border-left: 3px solid var(--accent-blue);
-    padding: 20px;
-    border-radius: 0 8px 8px 0;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-primary);
-    line-height: 1.5;
-    margin-bottom: 48px;
-}
-
-/* CONTACTS */
-.contact-link {
-    display: flex;
-    justify-content: space-between;
+    gap: 20px;
     align-items: center;
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 6px;
-    padding: 14px 16px;
-    margin-bottom: 10px;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 14px;
-    transition: background 0.2s, border-color 0.2s;
+    margin-bottom: 28px;
 }
 
-.contact-link:hover {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-.contact-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-
-.contact-value {
-    font-weight: 600;
-}
-
-.sys-footer {
-    margin-top: 64px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    text-align: center;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-/* --- СТИЛИ ДЛЯ БЛОКА ПРОФИЛЯ И АВАТАРА --- */
-
-/* Контейнер для фото и текста делаем флекс-боксом, чтобы они встали в ряд */
-.hero-profile {
-    display: flex;
-    flex-wrap: wrap;
-    /* Чтобы на мобильных перенеслось вниз */
-    gap: 30px;
-    /* Расстояние между фото и текстом */
-    align-items: center;
-    /* Центрируем по вертикали */
-}
-
-/* Обертка для фото, чтобы задать размер и свечение */
 .profile-photo-wrap {
-    flex: 0 0 160px;
-    /* Фиксированный размер обертки */
-    width: 160px;
-    height: 160px;
+    flex: 0 0 100px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    /* Делаем круглым (если фото квадратное) */
-    border: 2px solid rgba(16, 185, 129, 0.4);
-    /* Полупрозрачная зеленая рамка */
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
-    /* Лёгкое неоновое свечение */
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.08);
     overflow: hidden;
-    /* Всё, что вылезает за круг — скрываем */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Стили самого изображения */
 .profile-avatar {
     width: 100%;
-    /* Фото занимает всю ширину обертки */
     height: 100%;
-    /* Фото занимает всю высоту обертки */
     object-fit: cover;
-    /* **КРИТИЧЕСКИ ВАЖНО:** масштабирует фото, чтобы оно не сплющилось, сохраняя пропорции */
     object-position: center;
-    /* Центрирует лицо */
     transition: transform 0.3s ease;
-    /* Анимация при наведении */
 }
 
-/* Эффект при наведении на аватар */
 .profile-photo-wrap:hover .profile-avatar {
-    transform: scale(1.1);
-    /* Слегка увеличиваем фото внутри круга */
+    transform: scale(1.06);
 }
 
-/* Стили для текстового блока рядом с фото */
 .profile-info-wrap {
     flex: 1;
-    /* Текст занимает всё оставшееся место */
-    min-width: 300px;
-    /* Минимальная ширина текста, чтобы не сплющился на мобильных */
 }
 
-/* Адаптив для мобильных телефонов */
-@media (max-width: 768px) {
-    .hero-profile {
-        flex-direction: column;
-        /* Ставим фото и текст друг под друга */
-        text-align: center;
-        /* Центрируем текст */
-    }
-
-    .profile-photo-wrap {
-        margin: 0 auto;
-        /* Центрируем круг с фото по горизонтали */
-    }
+.about-block {
+    margin-top: 24px;
 }
 
-/* --- БЛОК ИНЖЕНЕРНЫХ МЕТРИК --- */
+.about-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    line-height: 1.55;
+}
+
+/* ИНЖЕНЕРНЫЕ МЕТРИКИ */
 .engineering-metrics {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 30px;
+    gap: 12px;
     margin-bottom: 20px;
     width: 100%;
 }
 
 .metric-item {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: 6px;
-    padding: 12px 16px;
+    padding: 12px 14px;
     display: flex;
     flex-direction: column;
 }
 
 .metric-num {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
     color: var(--accent-green);
-    font-family: var(--font-mono);
     line-height: 1.2;
 }
 
 .metric-label {
     font-size: 11px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    letter-spacing: 0.5px;
+    color: var(--text-secondary);
     margin-top: 4px;
+    line-height: 1.3;
 }
 
-/* СТРОКА СТЕКА */
 .tech-stack-line {
-    font-family: var(--font-mono);
     font-size: 11px;
-    border: 1px dashed rgba(59, 130, 246, 0.2);
+    border: 1px dashed rgba(59, 130, 246, 0.15);
     padding: 10px 14px;
     border-radius: 6px;
-    margin-bottom: 40px;
     line-height: 1.4;
 }
 
@@ -398,52 +207,129 @@ h2.section-title::after {
     color: var(--text-secondary);
 }
 
-/* Корректировка сетки для мобилок */
-@media (max-width: 480px) {
-    .engineering-metrics {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
+/* БЛОК АУДИТА И РЕШЕНИЙ */
+.audit-container {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
 }
 
-/* --- БЛОК PRODUCTION PIPELINE --- */
+.audit-sub-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(239, 68, 68, 0.6);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.bullet-list {
+    list-style: none;
+}
+
+.bullet-item {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.bullet-item::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: #ef4444;
+    opacity: 0.6;
+}
+
+/* МАТРИЦА НАВЫКОВ ИЛИ РЕШЕНИЙ */
+.skills-matrix {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.matrix-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
+    border-radius: 6px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.matrix-card.dominant {
+    grid-column: span 2;
+    background: rgba(16, 185, 129, 0.01);
+    border-color: rgba(16, 185, 129, 0.12);
+}
+
+.matrix-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.matrix-card.dominant .matrix-tag {
+    color: var(--accent-green);
+}
+
+.matrix-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.matrix-card.dominant .matrix-card-title {
+    font-size: 16px;
+}
+
+.matrix-card-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+
+/* ОЧЕРЕДЬ ЗАДАЧ В РАЗРАБОТКЕ */
 .pipeline-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
+    gap: 10px;
 }
 
 .pipeline-item {
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
     border-radius: 6px;
-    padding: 14px 18px;
+    padding: 14px 16px;
     position: relative;
     overflow: hidden;
 }
 
-/* Свечение слева для активных задач */
 .pipeline-item.processing::before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
-    width: 3px;
+    width: 2px;
     background: var(--accent-green);
-    box-shadow: 0 0 10px var(--accent-green);
+    box-shadow: 0 0 8px var(--accent-green);
 }
 
-/* Свечение слева для задач в очереди */
 .pipeline-item.pending::before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
-    width: 3px;
-    background: rgba(59, 130, 246, 0.4);
+    width: 2px;
+    background: rgba(59, 130, 246, 0.3);
 }
 
 .pipeline-meta {
@@ -451,15 +337,14 @@ h2.section-title::after {
     justify-content: space-between;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 9px;
     margin-bottom: 6px;
+    text-transform: uppercase;
 }
 
 .pipeline-status-badge {
     color: var(--accent-green);
-    text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 0.5px;
 }
 
 .pipeline-status-badge.text-blue {
@@ -471,7 +356,7 @@ h2.section-title::after {
 }
 
 .pipeline-name {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 4px;
@@ -483,39 +368,103 @@ h2.section-title::after {
     line-height: 1.4;
 }
 
-/* --- БЛОК WORKFLOW & ROLES --- */
+/* КАРТОЧКИ КЕЙСОВ */
+.case-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
+    border-top: 1px solid var(--border-top-glow);
+    border-radius: 6px;
+    padding: 18px;
+    margin-bottom: 12px;
+}
+
+.case-tag {
+    font-size: 10px;
+    color: var(--accent-blue);
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.case-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.case-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.case-architecture-spec {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: #020203;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+.spec-line {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.spec-key {
+    color: var(--accent-green);
+    margin-right: 4px;
+    font-weight: 600;
+}
+
+/* СЕТКА ТЕГОВ И ИНСТРУМЕНТОВ */
+.tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tool-badge {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 11.5px;
+    color: var(--text-secondary);
+}
+
+/* СЕТКА ЭТАПОВ РАБОТЫ */
 .workflow-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 20px;
+    gap: 12px;
+    margin-top: 16px;
 }
 
 .workflow-step {
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
     border-radius: 6px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
+    padding: 14px;
 }
 
 .step-num {
-    font-family: var(--font-mono);
     font-size: 14px;
     font-weight: 800;
     color: var(--accent-blue);
-    margin-bottom: 8px;
-    border-bottom: 1px dashed rgba(59, 130, 246, 0.2);
-    padding-bottom: 4px;
+    margin-bottom: 6px;
+    border-bottom: 1px dashed rgba(59, 130, 246, 0.15);
+    padding-bottom: 2px;
     width: fit-content;
 }
 
 .step-title {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .step-desc {
@@ -524,43 +473,98 @@ h2.section-title::after {
     line-height: 1.4;
 }
 
-/* Блок ролей */
 .roles-block {
-    margin-top: 24px;
-    padding: 14px 18px;
-    background: rgba(139, 92, 246, 0.02);
-    border: 1px dashed rgba(139, 92, 246, 0.2);
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: rgba(139, 92, 246, 0.01);
+    border: 1px dashed rgba(139, 92, 246, 0.15);
     border-radius: 6px;
 }
 
 .roles-title {
-    font-family: var(--font-mono);
     font-size: 11px;
     color: var(--text-secondary);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .roles-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
 }
 
 .role-badge-item {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 4px;
-    padding: 6px 12px;
-    font-size: 12px;
+    padding: 4px 10px;
+    font-size: 11.5px;
     color: var(--text-primary);
 }
 
-/* Адаптив для шагов */
+/* БЛОК МАНИФЕСТА */
+.manifesto-block {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.03) 0%, rgba(16, 185, 129, 0.03) 100%);
+    border-left: 2px solid var(--accent-blue);
+    padding: 18px;
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin-bottom: 56px;
+}
+
+/* ССЫЛКИ КОНТАКТОВ */
+.contact-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 13.5px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.contact-link:hover {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.contact-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.contact-value {
+    font-weight: 600;
+}
+
+.sys-footer {
+    margin-top: 56px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА */
 @media (max-width: 768px) {
-    .workflow-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
+    body { padding: 40px 16px; }
+    .profile-meta-container { flex-direction: column; text-align: center; gap: 16px; }
+    .profile-photo-wrap { margin: 0 auto; }
+    .workflow-grid { grid-template-columns: 1fr; gap: 10px; }
+}
+
+@media (max-width: 600px) {
+    .skills-matrix { grid-template-columns: 1fr; }
+    .matrix-card.dominant { grid-column: span 1; }
+    .engineering-metrics { grid-template-columns: 1fr; gap: 8px; }
 }
