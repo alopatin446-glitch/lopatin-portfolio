@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Антон Лопатин // Системная автоматизация бизнеса</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         /* DESIGN TOKENS & SYSTEM VARIABLES */
         :root {
@@ -25,9 +23,7 @@
         }
 
         /* RESET & BASE STYLES */
-        *,
-        *::before,
-        *::after {
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -38,7 +34,7 @@
             color: var(--text-primary);
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
             min-height: 100vh;
-            line-height: 1.5;
+            line-height: 1.6;
             padding: 40px 20px;
             display: flex;
             justify-content: center;
@@ -60,10 +56,11 @@
             pointer-events: none;
         }
 
-        /* CONTAINER LAYOUT (MOBILE OPTIMIZED RATIO) */
         .viewport-canvas {
             width: 100%;
             max-width: 540px;
+            z-index: 10;
+            position: relative;
         }
 
         /* SYSTEM METRICS / TOP BAR */
@@ -91,20 +88,21 @@
             box-shadow: 0 0 8px var(--accent-green);
         }
 
-        /* TYPOGRAPHY MATRIX */
+        /* TYPOGRAPHY */
         h1 {
             font-size: 32px;
             font-weight: 800;
             letter-spacing: -1px;
             line-height: 1.1;
-            margin-bottom: 6px;
+            margin-bottom: 12px;
         }
 
         .subtitle {
             font-family: var(--font-mono);
             font-size: 13px;
             color: var(--accent-blue);
-            font-weight: 500;
+            font-weight: 600;
+            line-height: 1.4;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 40px;
@@ -116,7 +114,7 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: var(--text-muted);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
         }
@@ -130,17 +128,42 @@
         }
 
         .about-text {
-            font-size: 16px;
-            line-height: 1.5;
+            font-size: 15px;
             color: var(--text-secondary);
-            margin-bottom: 48px;
+            margin-bottom: 16px;
         }
 
-        /* PREMIUM GRAPHITE SURFACES */
         .section-block {
             margin-bottom: 48px;
         }
 
+        /* LISTS (BULLS) */
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bullet-item {
+            font-size: 14px;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .bullet-item::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .useful-list .bullet-item::before {
+            color: var(--accent-blue);
+        }
+
+        /* CARDS */
         .case-card {
             background: var(--bg-card);
             border: 1px solid var(--border-glow);
@@ -168,19 +191,20 @@
         }
 
         .case-title {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 8px;
+            line-height: 1.3;
         }
 
         .case-desc {
-            font-size: 14px;
+            font-size: 13.5px;
             color: var(--text-secondary);
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
-        /* TOOL MATRIX (BADGES) */
+        /* TOOLS BADGES */
         .tools-grid {
             display: flex;
             flex-wrap: wrap;
@@ -192,12 +216,24 @@
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 4px;
             padding: 4px 10px;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-secondary);
-            font-family: var(--font-mono);
         }
 
-        /* CONTACTS LAYER */
+        /* STATEMENT MANIFESTO */
+        .manifesto-block {
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-left: 3px solid var(--accent-blue);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin-bottom: 48px;
+        }
+
+        /* CONTACTS */
         .contact-link {
             display: flex;
             justify-content: space-between;
@@ -209,7 +245,7 @@
             margin-bottom: 10px;
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             transition: background 0.2s, border-color 0.2s;
         }
 
@@ -226,10 +262,9 @@
         }
 
         .contact-value {
-            font-weight: 500;
+            font-weight: 600;
         }
 
-        /* SYSTEM FOOTER */
         .sys-footer {
             margin-top: 64px;
             font-family: var(--font-mono);
@@ -241,50 +276,85 @@
         }
     </style>
 </head>
-
 <body>
 
     <div class="viewport-canvas">
-
+        
         <div class="sys-header">
-            <div>AL_CORE // PORTFOLIO_V1</div>
+            <div>AL_CORE // ARCHITECT_V1</div>
             <div><span class="status-dot"></span>AVAILABLE FOR PROJECTS</div>
         </div>
 
         <header class="section-block">
             <h1>Антон Лопатин</h1>
-            <div class="subtitle">Системный аналитик / CRM / AI-автоматизация</div>
-
+            <div class="subtitle">Системный аналитик для малого бизнеса / CRM-архитектура / AI-автоматизация / операционные процессы</div>
+            
             <h2 class="section-title">Что делаю</h2>
             <p class="about-text">
-                Навожу порядок в бизнес-процессах, CRM, заявках, задачах, рекламе и рутине. Помогаю малому бизнесу
-                работать системнее и меньше зависеть от хаоса.
+                Навожу порядок в заявках, CRM, рекламе, расчётах и операционке малого бизнеса. Разбираю хаотичные процессы, нахожу потери денег и превращаю ручную работу в понятную систему: от первого лида до производства, монтажа, оплаты и повторной продажи.
+            </p>
+            <p class="about-text">
+                Проектирую CRM/ERP-логику, пишу ТЗ, собираю карты процессов, внедряю AI-инструменты и помогаю бизнесу меньше зависеть от памяти сотрудников, Excel и бесконечных чатов.
             </p>
         </header>
 
         <section class="section-block">
-            <h2 class="section-title">Кейсы</h2>
+            <h2 class="section-title">Могу быть полезен, если</h2>
+            <ul class="bullet-list useful-list">
+                <li class="bullet-item">заявки теряются в чатах и таблицах</li>
+                <li class="bullet-item">CRM есть, но ей неудобно пользоваться</li>
+                <li class="bullet-item">менеджеры работают каждый по-своему</li>
+                <li class="bullet-item">руководитель не видит реальные цифры</li>
+                <li class="bullet-item">расчёты делаются вручную и часто ошибаются</li>
+                <li class="bullet-item">реклама даёт лиды, но путь клиента не контролируется</li>
+                <li class="bullet-item">хочется внедрить AI, но непонятно с чего начать</li>
+            </ul>
+        </section>
 
+        <section class="section-block">
+            <h2 class="section-title">Что умею</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">Разбираю хаотичные бизнес-процессы и превращаю их в понятную схему</li>
+                <li class="bullet-item">Проектирую CRM/ERP-логику под реальные операции компании</li>
+                <li class="bullet-item">Настраиваю путь клиента: заявка → продажа → производство → монтаж → повторная продажа</li>
+                <li class="bullet-item">Помогаю внедрять AI-инструменты в рутину, продажи, контент и аналитику</li>
+                <li class="bullet-item">Ищу потери денег: заявки, конверсия, менеджеры, расчёты, сроки, ручные ошибки</li>
+                <li class="bullet-item">Делаю ТЗ для разработчиков, дизайнеров, нейросетей и подрядчиков</li>
+                <li class="bullet-item">Собираю лендинги/презентации/воронки под конкретную бизнес-задачу</li>
+            </ul>
+        </section>
+
+        <section class="section-block">
+            <h2 class="section-title">Кейсы и опыт</h2>
+            
             <div class="case-card">
                 <span class="case-tag">Собственный продукт // Production MVP</span>
                 <div class="case-title">CRM/ERP для мягких окон</div>
-                <div class="case-desc">Оцифровка сложного производства тентовых конструкций с нуля. Проектирование
-                    инвариантов неизменяемости цен сделок, калькулятора геометрии замера полотна до миллиметра и
-                    координации монтажных бригад.</div>
+                <div class="case-desc">Оцифровка сложного производства тентовых конструкций с нуля. Проектирование инвариантов неизменяемости цен сделок, калькулятора геометрии замера полотна до миллиметра и координации монтажных бригад.</div>
+            </div>
+
+            <div class="case-card">
+                <span class="case-tag">Инжиниринг процессов</span>
+                <div class="case-title">AI-автоматизация работы и документации</div>
+                <div class="case-desc">Выстраивание рабочих процессов с GPT, Claude, Gemini и другими AI-инструментами: аудит кода, ТЗ, презентации, документация, генерация идей, проверка решений, создание системных карт проекта.</div>
+            </div>
+
+            <div class="case-card">
+                <span class="case-tag">Архитектура систем</span>
+                <div class="case-title">ТЗ / аудит / инженерная документация</div>
+                <div class="case-desc">Создание подробных технических заданий, карт проекта, bug-register, roadmap, workbook и governance-документов для разработки сложных CRM/ERP-систем.</div>
             </div>
 
             <div class="case-card">
                 <span class="case-tag">Оптимизация процессов</span>
                 <div class="case-title">Автоматизация процессов компании</div>
-                <div class="case-desc">Пересборка хаотичных логов и блокнотов в жесткую контролируемую среду. Ликвидация
-                    человеческого фактора на стыке «Заявка — Производство — Контроль маржинальности».</div>
+                <div class="case-desc">Пересборка хаотичных логов и блокнотов в жесткую контролируемую среду. Ликвидация человеческого фактора на стыке «Заявка — Производство — Контроль маржинальности».</div>
             </div>
 
             <div class="case-card">
                 <span class="case-tag">Маркетинг & Конверсия</span>
                 <div class="case-title">Avito / клиентский путь / продажи</div>
-                <div class="case-desc">Проектирование и сквозной аудит воронки трафика. Связывание входящего потока
-                    лидов с оперативной обработкой менеджерами внутри CRM без потери обращений.</div>
+                <div class="case-desc">Проектирование и сквозной аудит воронки трафика. Связывание входящего потока лидов с оперативной обработкой менеджерами внутри CRM без потери обращений.</div>
             </div>
         </section>
 
@@ -296,33 +366,46 @@
                 <span class="tool-badge">Avito</span>
                 <span class="tool-badge">Telegram</span>
                 <span class="tool-badge">AI-инструменты</span>
+                <span class="tool-badge">ChatGPT</span>
+                <span class="tool-badge">Claude</span>
+                <span class="tool-badge">Gemini</span>
                 <span class="tool-badge">Tilda</span>
+                <span class="tool-badge">Figma</span>
+                <span class="tool-badge">Notion</span>
+                <span class="tool-badge">Google Docs</span>
+                <span class="tool-badge">Excel / Sheets</span>
                 <span class="tool-badge">Базовое программирование</span>
+                <span class="tool-badge">Next.js-понимание</span>
+                <span class="tool-badge">Prisma-понимание</span>
                 <span class="tool-badge">Аналитика процессов</span>
+                <span class="tool-badge">ТЗ для разработки</span>
+                <span class="tool-badge">Презентации / pitch-deck</span>
             </div>
         </section>
 
+        <div class="manifesto-block">
+            Я не просто «настраиваю CRM». Я разбираю, где бизнес теряет деньги, заявки и управляемость — и собираю систему, в которой процессы становятся видимыми.
+        </div>
+
         <section class="section-block">
             <h2 class="section-title">Контакты</h2>
-
+            
             <a href="tel:+79998887766" class="contact-link">
                 <span class="contact-label">телефон</span>
-                <span class="contact-value">+7 (913) 411-39-41</span>
+                <span class="contact-value">+7 (999) 888-77-66</span>
             </a>
 
             <a href="mailto:anton@example.com" class="contact-link">
                 <span class="contact-label">почта</span>
-                <span class="contact-value">tosha.lopatin.94@mail.ru</span>
+                <span class="contact-value">anton@example.com</span>
             </a>
 
-            <a href="https://t.me/Antoshka_admin" target="_blank" class="contact-link"
-                style="border-color: rgba(16, 185, 129, 0.2);">
+            <a href="https://t.me/Antoshka_admin" target="_blank" class="contact-link" style="border-color: rgba(16, 185, 129, 0.2);">
                 <span class="contact-label" style="color: var(--accent-green);">Telegram // Антон</span>
                 <span class="contact-value" style="color: var(--accent-green);">@Antoshka_admin</span>
             </a>
 
-            <a href="https://max.ru/u/f9LHodD0cOK2NaBdJfC710fSE0Km5DBT0VQpPpKMdWaOACHQGl_WRhUxYg4" target="_blank"
-                class="contact-link" style="border-color: rgba(139, 92, 246, 0.3);">
+            <a href="https://max.ru/u/f9LHodD0cOK2NaBdJfC710fSE0Km5DBT0VQpPpKMdWaOACHQGl_WRhUxYg4" target="_blank" class="contact-link" style="border-color: rgba(139, 92, 246, 0.3);">
                 <span class="contact-label" style="color: #a78bfa;">MAX // Мессенджер</span>
                 <span class="contact-value" style="color: #a78bfa;">Открыть профиль</span>
             </a>
@@ -335,5 +418,4 @@
     </div>
 
 </body>
-
 </html>
