@@ -22,7 +22,7 @@ function initDashboard(config) {
     // 1. Обновляем верхний статус-бар
     const sysCodeEl = document.getElementById("sys-code");
     const sysStatusEl = document.getElementById("sys-status");
-    
+
     if (sysCodeEl) sysCodeEl.textContent = config.profile.systemCode;
     if (sysStatusEl) {
         sysStatusEl.innerHTML = `
