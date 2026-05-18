@@ -341,3 +341,226 @@ h2.section-title::after {
         /* Центрируем круг с фото по горизонтали */
     }
 }
+
+/* --- БЛОК ИНЖЕНЕРНЫХ МЕТРИК --- */
+.engineering-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.metric-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent-green);
+    font-family: var(--font-mono);
+    line-height: 1.2;
+}
+
+.metric-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+}
+
+/* СТРОКА СТЕКА */
+.tech-stack-line {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    border: 1px dashed rgba(59, 130, 246, 0.2);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    line-height: 1.4;
+}
+
+.stack-title {
+    color: var(--accent-blue);
+    font-weight: 700;
+    margin-right: 6px;
+}
+
+.stack-core {
+    color: var(--text-secondary);
+}
+
+/* Корректировка сетки для мобилок */
+@media (max-width: 480px) {
+    .engineering-metrics {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+/* --- БЛОК PRODUCTION PIPELINE --- */
+.pipeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.pipeline-item {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    padding: 14px 18px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Свечение слева для активных задач */
+.pipeline-item.processing::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent-green);
+    box-shadow: 0 0 10px var(--accent-green);
+}
+
+/* Свечение слева для задач в очереди */
+.pipeline-item.pending::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: rgba(59, 130, 246, 0.4);
+}
+
+.pipeline-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    margin-bottom: 6px;
+}
+
+.pipeline-status-badge {
+    color: var(--accent-green);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.pipeline-status-badge.text-blue {
+    color: var(--accent-blue);
+}
+
+.pipeline-id {
+    color: var(--text-muted);
+}
+
+.pipeline-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.pipeline-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* --- БЛОК WORKFLOW & ROLES --- */
+.workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.workflow-step {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.step-num {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--accent-blue);
+    margin-bottom: 8px;
+    border-bottom: 1px dashed rgba(59, 130, 246, 0.2);
+    padding-bottom: 4px;
+    width: fit-content;
+}
+
+.step-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.step-desc {
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Блок ролей */
+.roles-block {
+    margin-top: 24px;
+    padding: 14px 18px;
+    background: rgba(139, 92, 246, 0.02);
+    border: 1px dashed rgba(139, 92, 246, 0.2);
+    border-radius: 6px;
+}
+
+.roles-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.roles-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.role-badge-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: var(--text-primary);
+}
+
+/* Адаптив для шагов */
+@media (max-width: 768px) {
+    .workflow-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
