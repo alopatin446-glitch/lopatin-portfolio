@@ -1,0 +1,343 @@
+/* DESIGN TOKENS & SYSTEM VARIABLES */
+:root {
+    --bg-main: #09090b;
+    --bg-card: rgba(20, 20, 23, 0.6);
+    --border-glow: rgba(255, 255, 255, 0.08);
+    --border-top-glow: rgba(255, 255, 255, 0.15);
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --text-muted: #52525b;
+    --accent-green: #10b981;
+    --accent-blue: #3b82f6;
+    --font-mono: 'Montserrat', ui-monospace, SFMono-Regular, sans-serif;
+}
+
+/* RESET & BASE STYLES */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    line-height: 1.6;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* BACKDROP LIGHTING EFFECTS */
+body::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.04) 0%, rgba(59, 130, 246, 0.03) 50%, transparent 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.viewport-canvas {
+    width: 100%;
+    max-width: 540px;
+    z-index: 10;
+    position: relative;
+}
+
+/* SYSTEM METRICS / TOP BAR */
+.sys-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 8px;
+    margin-bottom: 48px;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+    margin-right: 6px;
+    box-shadow: 0 0 8px var(--accent-green);
+}
+
+/* TYPOGRAPHY */
+h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent-blue);
+    font-weight: 600;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 40px;
+}
+
+h2.section-title {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+h2.section-title::after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-left: 12px;
+}
+
+.about-text {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.section-block {
+    margin-bottom: 48px;
+}
+
+/* LISTS (BULLS) */
+.bullet-list {
+    list-style: none;
+    padding: 0;
+}
+
+.bullet-item {
+    font-size: 14px;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.bullet-item::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+}
+
+.useful-list .bullet-item::before {
+    color: var(--accent-blue);
+}
+
+/* CARDS */
+.case-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
+    border-top: 1px solid var(--border-top-glow);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.case-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.case-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.case-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.case-desc {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* TOOLS BADGES */
+.tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tool-badge {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* STATEMENT MANIFESTO */
+.manifesto-block {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+    border-left: 3px solid var(--accent-blue);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin-bottom: 48px;
+}
+
+/* CONTACTS */
+.contact-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.contact-link:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.contact-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.contact-value {
+    font-weight: 600;
+}
+
+.sys-footer {
+    margin-top: 64px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* --- СТИЛИ ДЛЯ БЛОКА ПРОФИЛЯ И АВАТАРА --- */
+
+/* Контейнер для фото и текста делаем флекс-боксом, чтобы они встали в ряд */
+.hero-profile {
+    display: flex;
+    flex-wrap: wrap;
+    /* Чтобы на мобильных перенеслось вниз */
+    gap: 30px;
+    /* Расстояние между фото и текстом */
+    align-items: center;
+    /* Центрируем по вертикали */
+}
+
+/* Обертка для фото, чтобы задать размер и свечение */
+.profile-photo-wrap {
+    flex: 0 0 160px;
+    /* Фиксированный размер обертки */
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    /* Делаем круглым (если фото квадратное) */
+    border: 2px solid rgba(16, 185, 129, 0.4);
+    /* Полупрозрачная зеленая рамка */
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+    /* Лёгкое неоновое свечение */
+    overflow: hidden;
+    /* Всё, что вылезает за круг — скрываем */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Стили самого изображения */
+.profile-avatar {
+    width: 100%;
+    /* Фото занимает всю ширину обертки */
+    height: 100%;
+    /* Фото занимает всю высоту обертки */
+    object-fit: cover;
+    /* **КРИТИЧЕСКИ ВАЖНО:** масштабирует фото, чтобы оно не сплющилось, сохраняя пропорции */
+    object-position: center;
+    /* Центрирует лицо */
+    transition: transform 0.3s ease;
+    /* Анимация при наведении */
+}
+
+/* Эффект при наведении на аватар */
+.profile-photo-wrap:hover .profile-avatar {
+    transform: scale(1.1);
+    /* Слегка увеличиваем фото внутри круга */
+}
+
+/* Стили для текстового блока рядом с фото */
+.profile-info-wrap {
+    flex: 1;
+    /* Текст занимает всё оставшееся место */
+    min-width: 300px;
+    /* Минимальная ширина текста, чтобы не сплющился на мобильных */
+}
+
+/* Адаптив для мобильных телефонов */
+@media (max-width: 768px) {
+    .hero-profile {
+        flex-direction: column;
+        /* Ставим фото и текст друг под друга */
+        text-align: center;
+        /* Центрируем текст */
+    }
+
+    .profile-photo-wrap {
+        margin: 0 auto;
+        /* Центрируем круг с фото по горизонтали */
+    }
+}
