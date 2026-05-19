@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Антон Лопатин — Системный Архитектор</title>
+    <meta name="description" content="Личная digital-визитка Антона Лопатина: системное мышление, CRM/ERP, AI-автоматизация, операционный опыт и проект Easy Mo Core." />
+    
+    <style>
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           1. ДИЗАЙН-СИСТЕМА И КИНЕМАТОГРАФИЧЕСКИЕ КОНСТАНТЫ (Apple Restraint)
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        :root {
+            --bg-deep: #050505;
+            --bg-canvas: #0a0a0a;
+            --accent-glow: rgba(40, 180, 110, 0.12);
+            --accent-glow-intense: rgba(40, 180, 110, 0.35);
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --text-muted: #424245;
+            --border-color: rgba(255, 255, 255, 0.04);
+            --border-hover: rgba(40, 180, 110, 0.25);
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --transition-ambient: cubic-bezier(0.25, 1, 0.5, 1);
+            
+            /* Динамические переменные для безопасного параллакса без затирания transform */
+            --p-x: 0px;
+            --p-y: 0px;
+        }
+
+        /* Очистка и аппаратное ускорение */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-deep);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Кастомный деликатный скроллбар */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+        /* Глобальный контейнер пространственной перспективы */
+        .viewport-wrapper {
+            position: relative;
+            width: 100%;
+            perspective: 1000px;
+            overflow: hidden;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           2. ЖИВАЯ СРЕДА (Глубокие фоновые слои и процедурный шум)
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .ambient-environment {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #0c0d0e 0%, var(--bg-deep) 100%);
+        }
+
+        /* Кинематографическое дыхание света (Второй 1-2) */
+        .ambient-glow-core {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1000px;
+            height: 600px;
+            background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 75%);
+            filter: blur(130px);
+            opacity: 0;
+            animation: coreBreathe 10s var(--transition-ambient) infinite alternate;
+        }
+
+        @keyframes coreBreathe {
+            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.92) translateZ(-100px); }
+            100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.05) translateZ(-50px); }
+        }
+
+        /* Валидный, чистый SVG-шум без синтаксического мусора */
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Верхний системный бар в стиле Apple Restraint */
+        .top-system-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 65px;
+            padding: 0 4%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(5, 5, 5, 0.4);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .top-system-bar__identity {
+            display: flex;
+            gap: 20px;
+            color: var(--text-primary);
+        }
+
+        .top-system-bar__identity span:nth-child(2) {
+            color: var(--text-muted);
+        }
+
+        .top-system-bar__nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .top-system-bar__nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .top-system-bar__nav a:hover {
+            color: var(--text-primary);
+        }
+
+        .top-system-bar__status {
+            color: #28b46e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .top-system-bar__status::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #28b46e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-glow-intense);
+        }
+
+        /* Звуковой контроллер */
+        .audio-trigger {
+            position: fixed;
+            bottom: 30px;
+            left: 40px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            background: rgba(10, 10, 10, 0.5);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            transition: border-color 0.4s, color 0.4s;
+        }
+
+        .audio-trigger:hover { border-color: var(--border-hover); color: var(--text-primary); }
+        .audio-wave { display: flex; align-items: center; gap: 3px; width: 16px; height: 12px; }
+        .audio-wave span { display: block; width: 2px; height: 100%; background-color: var(--text-secondary); transform-origin: bottom; transform: scaleY(0.2); }
+        .audio-trigger.playing .audio-wave span { animation: barPulse 1.2s ease-in-out infinite alternate; }
+        .audio-trigger.playing .audio-wave span:nth-child(2) { animation-delay: 0.15s; }
+        .audio-trigger.playing .audio-wave span:nth-child(3) { animation-delay: 0.35s; }
+        @keyframes barPulse { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(1); } }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           3. ХОРЕОГРАФИЯ ГЕРОЯ (Второй 0-5: Тьма -> Проявление слоев)
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .cinematic-hero {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            padding: 100px 4% 60px 4%;
+            background: linear-gradient(to bottom, var(--bg-deep) 0%, transparent 100%);
+        }
+
+        .spatial-stage {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 80px;
+            transform-style: preserve-3d;
+        }
+
+        /* Левое крыло: Текстовый манифест (Второй 4-5) */
+        .hero-narrative {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transform-style: preserve-3d;
+            /* JS двигает переменные, CSS безопасно умножает их внутри calc() */
+            transform: translateX(calc(var(--p-x) * 0.4)) translateY(calc(var(--p-y) * 0.4));
+            transition: transform 0.2s ease-out;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: elementEntrance 1.5s cubic-bezier(0.16, 1, 0.3, 1) 3.5s forwards;
+        }
+
+        .monolith-title {
+            font-size: 42px;
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(25px);
+            animation: elementEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1) 3.8s forwards;
+        }
+
+        .hero-lead {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: elementEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1) 4.1s forwards;
+        }
+
+        .hero-line {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin-bottom: 35px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: elementEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1) 4.3s forwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 45px;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: elementEntrance 1.5s cubic-bezier(0.16, 1, 0.3, 1) 4.5s forwards;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 28px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.4s var(--transition-ambient);
+        }
+
+        .button--primary {
+            background: var(--text-primary);
+            color: var(--bg-deep);
+        }
+
+        .button--primary:hover {
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .button--secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .button--secondary:hover {
+            border-color: var(--border-hover);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .hero-proof-row {
+            display: flex;
+            gap: 25px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            opacity: 0;
+            animation: elementEntrance 1.5s ease-out 4.8s forwards;
+        }
+
+        /* Правое крыло: Центрифуга визуальной среды */
+        .portrait-canvas-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            transform: translateX(calc(var(--p-x) * 0.7)) translateY(calc(var(--p-y) * 0.7));
+            transition: transform 0.25s ease-out;
+        }
+
+        /* Раскрытие портрета (Второй 2-3) */
+        .cinematic-frame {
+            position: relative;
+            width: 420px;
+            height: 550px;
+            background: #08090a;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 60px 120px rgba(0,0,0,0.9);
+            transform-style: preserve-3d;
+            opacity: 0;
+            transform: scale(0.95) translateZ(-60px);
+            animation: frameReveal 2.8s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
+        }
+
+        @keyframes frameReveal {
+            to { opacity: 1; transform: scale(1) translateZ(0); }
+        }
+
+        .portrait-asset {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Плавная глубинная проявка от полной темноты */
+            filter: grayscale(100%) brightness(0) contrast(1.2);
+            mix-blend-mode: lighten;
+            animation: portraitLighting 4.5s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
+        }
+
+        @keyframes portraitLighting {
+            to { filter: grayscale(25%) brightness(0.7) contrast(1.02); }
+        }
+
+        /* Исправленный корректный световой луч скольжения */
+        .cinematic-ray {
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: skewX(-20deg);
+            pointer-events: none;
+            animation: raySweep 3s cubic-bezier(0.2, 1, 0.3, 1) 1.5s forwards;
+        }
+
+        @keyframes raySweep {
+            to { left: 180%; }
+        }
+
+        .shadow-shroud {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, transparent 45%, rgba(5,5,5,0.1) 100%);
+            pointer-events: none;
+        }
+
+        /* Живые операционные модули (Второй 3-4) */
+        .telemetry-module {
+            position: absolute;
+            background: rgba(12, 14, 16, 0.7);
+            backdrop-filter: blur(30px) saturate(120%);
+            border: 1px solid var(--border-color);
+            padding: 14px 20px;
+            border-radius: 4px;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: auto;
+            transition: border-color 0.4s, box-shadow 0.4s, transform 0.3s ease-out;
+        }
+
+        .telemetry-module:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
+        }
+
+        /* У каждого модуля независимый под-параллакс через вложенный calc */
+        .module-1 {
+            top: 12%;
+            left: -50px;
+            transform: translate3d(calc(var(--p-x) * 0.4), calc(var(--p-y) * 0.4), 50px);
+            animation: moduleEntrance 2s cubic-bezier(0.16, 1, 0.3, 1) 2.4s forwards;
+        }
+
+        .module-2 {
+            top: 40%;
+            right: -60px;
+            transform: translate3d(calc(var(--p-x) * -0.5), calc(var(--p-y) * -0.5), 70px);
+            animation: moduleEntrance 2s cubic-bezier(0.16, 1, 0.3, 1) 2.7s forwards;
+        }
+
+        .module-3 {
+            bottom: 12%;
+            left: -30px;
+            transform: translate3d(calc(var(--p-x) * 0.3), calc(var(--p-y) * 0.6), 40px);
+            animation: moduleEntrance 2s cubic-bezier(0.16, 1, 0.3, 1) 3.0s forwards;
+        }
+
+        .module-4 {
+            bottom: -25px;
+            right: 20px;
+            transform: translate3d(calc(var(--p-x) * 0.8), calc(var(--p-y) * 0.2), 60px);
+            animation: moduleEntrance 2s cubic-bezier(0.16, 1, 0.3, 1) 3.3s forwards;
+        }
+
+        @keyframes moduleEntrance {
+            from { opacity: 0; margin-top: 15px; }
+            to { opacity: 1; margin-top: 0; }
+        }
+
+        .telemetry-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+        .signal-indicator { width: 5px; height: 5px; border-radius: 50%; background-color: #28b46e; box-shadow: 0 0 8px var(--accent-glow-intense); position: relative; }
+        .signal-indicator::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid #28b46e; opacity: 0; animation: signalPulse 2.5s linear infinite; }
+        @keyframes signalPulse { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
+        
+        .telemetry-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-secondary); font-weight: 500; }
+        .telemetry-metric { font-size: 14px; font-weight: 400; letter-spacing: -0.01em; color: var(--text-primary); }
+        .telemetry-metric small { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; font-weight: 300; }
+
+        @keyframes elementEntrance {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           4. СТРУКТУРНЫЕ СЕКЦИИ И ИНТЕГРИРОВАННЫЕ ФОТО (Интерфейсный люкс)
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .section {
+            position: relative;
+            width: 100%;
+            padding: 140px 4%;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            background-color: var(--bg-deep);
+        }
+
+        .section-grid {
+            width: 100%;
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: start;
+        }
+
+        .section-sticky-meta {
+            position: sticky;
+            top: 120px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::before { content: ''; width: 20px; height: 1px; background-color: var(--text-muted); }
+        .section-headline { font-size: 36px; font-weight: 400; letter-spacing: -0.02em; line-height: 1.25; color: var(--text-primary); }
+
+        /* Архитектурные карточки контента */
+        .content-stack { display: flex; flex-direction: column; gap: 30px; }
+        
+        .cinematic-card {
+            background: rgba(14, 16, 19, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 40px;
+            transition: border-color 0.5s var(--transition-ambient), background 0.5s var(--transition-ambient);
+        }
+
+        .cinematic-card:hover {
+            border-color: rgba(255,255,255,0.08);
+            background: rgba(16, 19, 23, 0.5);
+        }
+
+        .card-index { font-size: 11px; font-family: monospace; color: var(--text-muted); margin-bottom: 20px; display: block; }
+        .card-title { font-size: 20px; font-weight: 400; margin-bottom: 14px; color: var(--text-primary); }
+        .card-body { font-size: 15px; line-height: 1.6; color: var(--text-secondary); }
+
+        /* Внутренние списки */
+        .card-list { list-style: none; margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
+        .card-list li { font-size: 14px; color: var(--text-secondary); padding-left: 15px; position: relative; }
+        .card-list li::before { content: '·'; position: absolute; left: 0; color: #28b46e; font-weight: bold; }
+
+        /* Интеграция Медиа без прямоугольных рамок */
+        .embedded-environment-frame {
+            position: relative;
+            width: 100%;
+            height: 440px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-top: 45px;
+            background: #090a0c;
+        }
+
+        .embedded-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(60%) brightness(0.35) contrast(1.1);
+            transition: filter 1s var(--transition-ambient), transform 1s var(--transition-ambient);
+        }
+
+        .embedded-environment-frame:hover .embedded-photo {
+            filter: grayscale(20%) brightness(0.55) contrast(1.02);
+            transform: scale(1.02);
+        }
+
+        /* Грид компетенций */
+        .capability-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        /* Факт-карты для Easy Mo Core */
+        .project-facts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .fact-card {
+            background: rgba(5,5,5,0.4);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .fact-card span { font-size: 10px; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 5px; }
+        .fact-card strong { font-size: 14px; font-weight: 400; color: var(--text-primary); }
+
+        /* Монолитный блок цитаты */
+        .statement-block {
+            width: 100%;
+            max-width: 1400px;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin: 40px auto;
+        }
+
+        .statement-text {
+            font-size: 28px;
+            font-weight: 300;
+            color: var(--text-primary);
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+            text-align: left;
+        }
+
+        /* Финальное утверждение */
+        .section--final {
+            padding: 200px 4%;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent, #030303 100%);
+        }
+
+        .final-statement-wrap { max-width: 850px; margin: 0 auto; }
+        .final-statement-wrap h2 { font-size: 38px; font-weight: 300; line-height: 1.4; letter-spacing: -0.02em; color: var(--text-primary); }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           5. ИНТЕРАКТИВНАЯ ПОВЕРХНОСТЬ СВЯЗИ И ФУТЕР
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .contact-surface {
+            max-width: 1400px;
+            width: 100%;
+            background: radial-gradient(ellipse at top right, rgba(40,180,110,0.03), transparent 55%), rgba(11, 13, 15, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 60px;
+            margin: 0 auto 120px auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .contact-details h3 { font-size: 26px; font-weight: 400; margin-bottom: 20px; line-height: 1.3; }
+        .contact-details p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+
+        .interactive-links { display: flex; flex-direction: column; gap: 16px; }
+        
+        .system-action-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+            border: 1px solid var(--border-color);
+            background: rgba(5, 5, 5, 0.2);
+            border-radius: 4px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            transition: all 0.4s var(--transition-ambient);
+        }
+
+        .system-action-link:hover {
+            border-color: var(--border-hover);
+            background: rgba(40, 180, 110, 0.02);
+            transform: translateX(5px);
+        }
+
+        .system-action-link span:nth-child(2) { color: var(--text-muted); font-family: monospace; transition: color 0.4s; }
+        .system-action-link:hover span:nth-child(2) { color: #28b46e; }
+
+        .site-footer {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 4%;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        /* Адаптивная калибровка */
+        @media(max-width: 1100px) {
+            .spatial-stage, .section-grid, .contact-surface, .capability-grid { grid-template-columns: 1fr; gap: 50px; }
+            .section-sticky-meta { position: relative; top: 0; }
+            .cinematic-frame { width: 100%; max-width: 420px; height: 500px; }
+            .monolith-title { font-size: 34px; }
+            .statement-text { font-size: 22px; }
+            .module-1, .module-2, .module-3, .module-4 { left: 10px !important; right: auto !important; transform: none !important; }
+            .top-system-bar__status { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grain-overlay"></div>
+    <div class="ambient-environment" aria-hidden="true">
+        <div class="ambient-glow-core"></div>
+    </div>
+
+    <header class="top-system-bar">
+        <div class="top-system-bar__identity">
+            <span>Anton Lopatin</span>
+            <span>Founder / Systems Architect</span>
+        </div>
+        <nav class="top-system-bar__nav" aria-label="Навигация">
+            <a href="#identity">Кто я</a>
+            <a href="#thinking">Мышление</a>
+            <a href="#experience">Опыт</a>
+            <a href="#project">Easy Mo Core</a>
+        </nav>
+        <div class="top-system-bar__status">
+            <span>Available for systems scaling</span>
+        </div>
+    </header>
+
+    <div class="audio-trigger" id="audioNode">
+        <div class="audio-wave"><span></span><span></span><span></span></div>
+        <span id="audioStatusText">Atmosphere Off</span>
+    </div>
+
+    <div class="viewport-wrapper">
+        <main>
+            
+            <section id="hero" class="cinematic-hero">
+                <div class="spatial-stage">
+                    
+                    <div class="hero-narrative">
+                        <p class="eyebrow">System Builder from Real Business Chaos</p>
+                        <h1 class="monolith-title">
+                            Я превращаю операционный хаос бизнеса в понятные цифровые системы.
+                        </h1>
+                        <p class="hero-lead">
+                            Я не пришёл в CRM/ERP из теории. Я пришёл из продаж, производства, монтажей, Авито, клиентских конфликтов, ручных расчётов и ежедневного управленческого хаоса малого бизнеса.
+                        </p>
+                        <p class="hero-line">
+                            Теперь я проектирую архитектуру, где видны заявки, расчёты, производство, монтажи, деньги и слабые места в единой чистой логике.
+                        </p>
+                        <div class="hero-actions">
+                            <a class="button button--primary" href="#project">Изучить Easy Mo Core</a>
+                            <a class="button button--secondary" href="#contact">Инициализировать связь</a>
+                        </div>
+                        <div class="hero-proof-row">
+                            <span>CRM/ERP Architecture</span>
+                            <span>AI Workflows</span>
+                            <span>Systems Analysis</span>
+                        </div>
+                    </div>
+
+                    <div class="portrait-canvas-container">
+                        <div class="cinematic-frame">
+                            <img src="foto 1.jpg.png" alt="Антон Лопатин" class="portrait-asset" />
+                            <div class="cinematic-ray"></div>
+                            <div class="shadow-shroud"></div>
+                        </div>
+
+                        <div class="telemetry-module module-1">
+                            <div class="telemetry-header">
+                                <div class="signal-indicator"></div>
+                                <div class="telemetry-label">Input Noise</div>
+                            </div>
+                            <div class="telemetry-metric">Excel · чаты · хаос<small>операционный шум</small></div>
+                        </div>
+
+                        <div class="telemetry-module module-2">
+                            <div class="telemetry-header">
+                                <div class="signal-indicator"></div>
+                                <div class="telemetry-label">Process Matrix</div>
+                            </div>
+                            <div class="telemetry-metric">аудит → ТЗ → сборка<small>структуризация логики</small></div>
+                        </div>
+
+                        <div class="telemetry-module module-3">
+                            <div class="telemetry-header">
+                                <div class="signal-indicator"></div>
+                                <div class="telemetry-label">Output Control</div>
+                            </div>
+                            <div class="telemetry-metric">CRM/ERP · AI · Margin<small>управляемая среда</small></div>
+                        </div>
+
+                        <div class="telemetry-module module-4">
+                            <div class="telemetry-header">
+                                <div class="signal-indicator"></div>
+                                <div class="telemetry-label">Founder Signal</div>
+                            </div>
+                            <div class="telemetry-metric">Я вышел из этой боли</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="identity" class="section">
+                <div class="section-grid">
+                    <div class="section-sticky-meta">
+                        <p class="section-label">01 / Идентификация</p>
+                        <h2 class="section-headline">Не классический разработчик. Практический системный человек.</h2>
+                        
+                        <div class="embedded-environment-frame">
+                            <img src="foto 2.png" alt="Operational Analysis Background" class="embedded-photo">
+                        </div>
+                    </div>
+
+                    <div class="content-stack">
+                        <article class="cinematic-card">
+                            <span class="card-index">// 01.01</span>
+                            <h3 class="card-title">Бизнес снизу</h3>
+                            <p class="card-body">
+                                Продажи, касса, контент, маркетплейсы, Авито, входящие звонки, адаптация сотрудников и ежедневная операционная рутина. Я знаю, как функционируют базовые узлы привлечения и удержания клиентов.
+                            </p>
+                        </article>
+
+                        <article class="cinematic-card">
+                            <span class="card-index">// 01.02</span>
+                            <h3 class="card-title">Бизнес изнутри</h3>
+                            <p class="card-body">
+                                Замеры, производство, монтажи, сложная логистика, ошибки линейных менеджеров, ручные расчёты и критические решения, которые годами держатся исключительно на памяти людей.
+                            </p>
+                        </article>
+
+                        <article class="cinematic-card">
+                            <span class="card-index">// 01.03</span>
+                            <h3 class="card-title">Сборка системных решений</h3>
+                            <p class="card-body">
+                                Я начал проектировать архитектуру не из-за трендов автоматизации, а потому что на рынке не существует готового, гибкого софта под глубокую и специфическую производственно-монтажную логику.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <div class="statement-block">
+                <div style="max-width: 1400px; padding: 0 4%;">
+                    <p class="statement-text">“ CRM для меня — это не просто таблица менеджеров с карточками клиентов. Это центральная нервная система живого бизнеса. ”</p>
+                </div>
+            </div>
+
+            <section id="thinking" class="section">
+                <div class="section-grid">
+                    <div class="content-stack">
+                        <article class="cinematic-card">
+                            <span class="card-index">// 02.01</span>
+                            <h3 class="card-title">Шаг 1: Локализация хаоса</h3>
+                            <p class="card-body">Поиск зон утечки данных: где теряются заявки, где пропадают реальные деньги, срываются сроки и размывается персональная ответственность за результат.</p>
+                        </article>
+
+                        <article class="cinematic-card">
+                            <span class="card-index">// 02.02</span>
+                            <h3 class="card-title">Шаг 2: Декомпозиция взаимосвязей</h3>
+                            <p class="card-body">Разбор скрытых зависимостей. Понимание того, какие процессы жестко связаны между собой, где возникает дефицит данных и на каких этапах люди закрывают инфраструктурные дыры личным героизмом.</p>
+                        </article>
+
+                        <article class="cinematic-card">
+                            <span class="card-index">// 02.03</span>
+                            <h3 class="card-title">Шаг 3: Поиск узких горлышек</h3>
+                            <p class="card-body">Вытаскивание скрытых уязвимостей наружу: ручные расчёты себестоимости, некорректные статусы заказов, рассинхронизация склада, логистики и монтажных бригад.</p>
+                        </article>
+
+                        <article class="cinematic-card">
+                            <span class="card-index">// 02.04</span>
+                            <h3 class="card-title">Шаг 4: Сборка цифрового механизма</h3>
+                            <p class="card-body">Описание жёсткой логики, правил, ролей и чистых интерфейсов. Перевод бизнес-процессов в среду, где система направляет сотрудника, минимизируя человеческий фактор.</p>
+                        </article>
+                    </div>
+
+                    <div class="section-sticky-meta">
+                        <p class="section-label">02 / Проектирование</p>
+                        <h2 class="section-headline">Моя работа всегда начинается не со строчек кода. Она начинается с тотального разбора хаоса.</h2>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="section">
+                <div class="section-grid">
+                    <div class="section-sticky-meta">
+                        <p class="section-label">03 / Опыт</p>
+                        <h2 class="section-headline">6+ лет в продажах, операционном управлении, маркетплейсах и автоматизации.</h2>
+                    </div>
+
+                    <div class="content-stack">
+                        <article class="cinematic-card">
+                            <span class="card-index">2022 — 2026 // Первый Потолочный / Фабрика Мягких Окон</span>
+                            <h3 class="card-title">Операционный директор / Системный архитектор</h3>
+                            <p class="card-body">Разработка и запуск кастомной CRM/ERP логики, автоматизация сквозных процессов от клика до монтажа.</p>
+                            <ul class="card-list">
+                                <li>Проектирование и вывод в Production MVP CRM/ERP для производственного бизнеса.</li>
+                                <li>Глубокий сквозной аудит процессов компании: маркетинг → расчет → производство → логистика.</li>
+                                <li>Интеграция систем автоматизации, построение AI-assisted рабочих процессов.</li>
+                            </ul>
+                        </article>
+
+                        <article class="cinematic-card">
+                            <span class="card-index">2021 — 2022 // Главный пассажир</span>
+                            <h3 class="card-title">Администратор магазина</h3>
+                            <p class="card-body">Управление розничной точкой, кассовая отчетность, координация поставок, развитие каналов Avito/Юла, создание контент-стратегии и онбординг персонала.</p>
+                        </article>
+
+                        <article class="cinematic-card">
+                            <span class="card-index">2019 — 2021 // Сеть ФилКом</span>
+                            <h3 class="card-title">Продавец-консультант</h3>
+                            <p class="card-body">Прямые активные продажи, оценка и предпродажная подготовка коммерческих позиций, работа со специализированными площадками объявлений.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="capabilities" class="section">
+                <div style="width: 100%; max-width: 1400px;">
+                    <p class="section-label" style="margin-bottom: 40px;">04 / Матрица навыков</p>
+                    <div class="capability-grid">
+                        <div class="cinematic-card">
+                            <span class="card-index">// 01</span>
+                            <h4 class="card-title">CRM/ERP Архитектура</h4>
+                            <p class="card-body">Проектирование баз данных, сущностей, ролей доступа, статусов сделок и сквозных потоков данных бизнеса.</p>
+                        </div>
+                        <div class="cinematic-card">
+                            <span class="card-index">// 02</span>
+                            <h4 class="card-title">Системный анализ</h4>
+                            <p class="card-body">Моделирование процессов AS IS / TO BE, локализация инфраструктурных дыр и создание ТЗ для разработки.</p>
+                        </div>
+                        <div class="cinematic-card">
+                            <span class="card-index">// 03</span>
+                            <h4 class="card-title">AI Workflows</h4>
+                            <p class="card-body">Внедрение ИИ-агентов для автоматического анализа спецификаций, генерации документов и ускорения разработки.</p>
+                        </div>
+                        <div class="cinematic-card">
+                            <span class="card-index">// 04</span>
+                            <h4 class="card-title">Операционный менеджмент</h4>
+                            <p class="card-body">Понимание природы продаж, складских остатков, мотивации монтажных бригад и реального клиентского пути.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="project" class="section">
+                <div class="section-grid">
+                    <div class="section-sticky-meta">
+                        <p class="section-label">05 / Главный проект</p>
+                        <h2 class="section-headline">Easy Mo Core — специализированная ERP/CRM среда для производственно-монтажных компаний.</h2>
+                        <p class="hero-lead" style="margin-top: 20px;">
+                            Первая боевая ниша — мягкие окна, ПВХ-шторы и защитные тенты. Система спроектирована внутри живого бизнеса, чтобы решать его фундаментальные задачи.
+                        </p>
+                        
+                        <div class="embedded-environment-frame">
+                            <img src="foto 3.png" alt="Easy Mo Core Systems Architecture" class="embedded-photo">
+                        </div>
+                    </div>
+
+                    <div class="content-stack">
+                        <article class="cinematic-card">
+                            <span class="card-index">// Системная Логика</span>
+                            <h3 class="card-title">Что контролирует продукт:</h3>
+                            <ul class="card-list" style="margin-top: 20px;">
+                                <li><strong>Сквозная карточка:</strong> Ведение клиента от клика на Avito до закрывающего акта монтажа.</li>
+                                <li><strong>Параметрический расчет:</strong> Автоматический расчет стоимости изделий на основе геометрии, раскроя материалов и фурнитуры.</li>
+                                <li><strong>Контроль маржинальности:</strong> Защита исторических заказов от пересчета при изменении цен на сырье и фиксация чистой прибыли.</li>
+                                <li><strong>Инфраструктурный Kanban:</strong> Синхронизация расписания замеров, загрузки цеха и выезда монтажников.</li>
+                            </ul>
+
+                            <div class="project-facts-grid">
+                                <div class="fact-card"><span>Текущая стадия</span><strong>Production MVP</strong></div>
+                                <div class="fact-card"><span>Технологический Стек</span><strong>Next.js · React · TS · PostgreSQL · Prisma</strong></div>
+                                <div class="fact-card"><span>ДНК Продукта</span><strong>Рожден внутри реального цеха</strong></div>
+                                <div class="fact-card"><span>Вектор Развития</span><strong>AI-native ERP для МСБ</strong></div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section--final">
+                <div class="final-statement-wrap">
+                    <p class="section-label" style="justify-content: center; margin-bottom: 30px;">Core Statement</p>
+                    <h2>Я не просто настраиваю изолированные цифровые инструменты. Я помогаю перестроить перегруженный ручной бизнес в прозрачную инженерную систему, где каждый процесс оцифрован и управляем.</h2>
+                </div>
+            </section>
+
+            <section id="contact" class="section">
+                <div class="contact-surface">
+                    <div class="contact-details">
+                        <p class="section-label" style="margin-bottom: 15px;">Инициация связи</p>
+                        <h3>Если вам нужен системный мыслитель вместо обычного разработчика — напишите мне.</h3>
+                        <p>Открыт для проектной работы, внедрения Easy Mo Core, глубокого системного аудита вашей операционки или партнерского масштабирования B2B-продуктов.</p>
+                    </div>
+
+                    <div class="interactive-links">
+                        <a href="https://t.me/your_telegram_username" class="system-action-link" target="_blank" rel="noopener">
+                            <span>Telegram Secure Link</span>
+                            <span>@your_username</span>
+                        </a>
+                        <a href="mailto:your_email@domain.com" class="system-action-link">
+                            <span>Direct SMTP Mail</span>
+                            <span>open_session</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <span>© 2026 Антон Лопатин</span>
+            <span>Digital Operating Environment // Built from Chaos</span>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Узлы для отслеживания мыши
+            const narrativeContainer = document.querySelector('.hero-narrative');
+            const portraitContainer = document.querySelector('.portrait-canvas-container');
+            
+            let targetMouseX = 0, targetMouseY = 0;
+            let currentMouseX = 0, currentMouseY = 0;
+            const interpolationRatio = 0.07; // Коэффициент инерции (тяжести) движения
+
+            // Вычисляем координаты мыши относительно центра экрана (-0.5 до 0.5)
+            window.addEventListener('mousemove', (event) => {
+                targetMouseX = (event.clientX / window.innerWidth) - 0.5;
+                targetMouseY = (event.clientY / window.innerHeight) - 0.5;
+            });
+
+            // Единый цикл анимации (Single RAF Loop) повышенной производительности
+            function updateDynamicParallax() {
+                // Плавное интерполированное приближение к координатам мыши
+                currentMouseX += (targetMouseX - currentMouseX) * interpolationRatio;
+                currentMouseY += (targetMouseY - currentMouseY) * interpolationRatio;
+
+                // Переводим смещение в пиксели
+                const pixelShiftX = currentMouseX * 50;
+                const pixelShiftY = currentMouseY * 50;
+
+                // Вместо перезаписи transform, мы безопасно прокидываем переменные в CSS
+                if (narrativeContainer) {
+                    narrativeContainer.style.setProperty('--p-x', `${pixelShiftX}px`);
+                    narrativeContainer.style.setProperty('--p-y', `${pixelShiftY}px`);
+                }
+                if (portraitContainer) {
+                    portraitContainer.style.setProperty('--p-x', `${pixelShiftX}px`);
+                    portraitContainer.style.setProperty('--p-y', `${pixelShiftY}px`);
+                }
+
+                requestAnimationFrame(updateDynamicParallax);
+            }
+            requestAnimationFrame(updateDynamicParallax);
+
+
+            // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            // ПРОЦЕДУРНЫЙ АУДИО-ИНТЕРФЕЙС (Глубокий эмбиент-гул)
+            // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            const audioButton = document.getElementById('audioNode');
+            const audioStatusLabel = document.getElementById('audioStatusText');
+            let audioContextInstance = null;
+            let soundOscillator = null;
+            let outputGainNode = null;
+            let isSoundPlaying = false;
+
+            function initProceduralAtmosphere() {
+                audioContextInstance = new (window.AudioContext || window.webkitAudioContext)();
+                
+                soundOscillator = audioContextInstance.createOscillator();
+                outputGainNode = audioContextInstance.createGain();
+                
+                soundOscillator.type = 'sine';
+                // Низкочастотная фундаментальная гармоника (55 Гц) для ощущения дорогого кино-кинематографа
+                soundOscillator.frequency.setValueAtTime(55, audioContextInstance.currentTime); 
+
+                // Фильтр низких частот для бархатного, нераздражающего звука
+                const filterNode = audioContextInstance.createBiquadFilter();
+                filterNode.type = 'lowpass';
+                filterNode.frequency.setValueAtTime(110, audioContextInstance.currentTime);
+
+                soundOscillator.connect(filterNode);
+                filterNode.connect(outputGainNode);
+                outputGainNode.connect(audioContextInstance.destination);
+                
+                outputGainNode.gain.setValueAtTime(0, audioContextInstance.currentTime);
+                soundOscillator.start();
+                // Деликатное, очень медленное нарастание звука (fade-in за 4 секунды)
+                outputGainNode.gain.linearRampToValueAtTime(0.05, audioContextInstance.currentTime + 4);
+            }
+
+            audioButton.addEventListener('click', () => {
+                if (!isSoundPlaying) {
+                    if (!audioContextInstance) {
+                        initProceduralAtmosphere();
+                    } else if (audioContextInstance.state === 'suspended') {
+                        audioContextInstance.resume();
+                        outputGainNode.gain.linearRampToValueAtTime(0.05, audioContextInstance.currentTime + 1.5);
+                    }
+                    audioButton.classList.add('playing');
+                    audioStatusLabel.textContent = "Atmosphere On";
+                    isSoundPlaying = true;
+                } else {
+                    if (audioContextInstance && outputGainNode) {
+                        outputGainNode.gain.linearRampToValueAtTime(0, audioContextInstance.currentTime + 1);
+                        setTimeout(() => {
+                            if (!isSoundPlaying) audioContextInstance.suspend();
+                        }, 1000);
+                    }
+                    audioButton.classList.remove('playing');
+                    audioStatusLabel.textContent = "Atmosphere Off";
+                    isSoundPlaying = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

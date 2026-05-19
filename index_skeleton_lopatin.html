@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Антон Лопатин — системный аналитик, AI-оператор, основатель Easy Mo Core</title>
+    <meta name="description"
+        content="Личная digital-визитка Антона Лопатина: системное мышление, CRM/ERP, AI-автоматизация, операционный опыт и проект Easy Mo Core." />
+
+    <!--
+        INDEX.HTML — CLEAN SEMANTIC SKELETON
+
+        Цель файла:
+        1. Не быть финальным дизайном.
+        2. Не повторять кашу Gemini/Claude.
+        3. Задать правильную смысловую архитектуру сайта.
+        4. Дать Claude чистый скелет, по которому можно заново построить cinematic frontend.
+
+        Главный принцип:
+        Это НЕ обычное портфолио разработчика.
+        Это digital founder card / cinematic personal operating environment.
+
+        Общая идея сайта:
+        Антон Лопатин — практический системный человек из реального бизнеса,
+        который прошёл через операционный хаос, продажи, производство, монтаж,
+        Авито, CRM, ERP и AI-инструменты — и теперь превращает хаос малого бизнеса
+        в понятные цифровые системы.
+
+        Важно для Claude:
+        - Не делать cyberpunk.
+        - Не делать hacker UI.
+        - Не делать neon overload.
+        - Не делать обычный dark landing.
+        - Не перегружать секции эффектами.
+        - Hero должен ощущаться как cinematic scene / digital environment.
+        - Тексты можно улучшать стилистически, но нельзя менять смысл.
+    -->
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="config.js" defer></script>
+    <script src="animation.js" defer></script>
+</head>
+
+<body>
+
+    <div class="site-atmosphere" aria-hidden="true">
+        <div class="atmosphere-plane atmosphere-plane--back"></div>
+        <div class="atmosphere-plane atmosphere-plane--haze"></div>
+        <div class="atmosphere-plane atmosphere-plane--light"></div>
+        <div class="atmosphere-plane atmosphere-plane--foreground"></div>
+    </div>
+
+    <header class="top-system-bar">
+        <div class="top-system-bar__identity">
+            <span>Anton Lopatin</span>
+            <span>Founder / Systems Builder</span>
+        </div>
+
+        <nav class="top-system-bar__nav" aria-label="Основная навигация">
+            <a href="#thinking">Мышление</a>
+            <a href="#experience">Опыт</a>
+            <a href="#project">Easy Mo Core</a>
+            <a href="#contact">Контакт</a>
+        </nav>
+
+        <div class="top-system-bar__status">
+            <span>Available for remote work / partnership</span>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="hero" class="hero-scene" data-scene="founder-entry">
+            <div class="hero-scene__camera">
+
+                <div class="hero-scene__content" data-depth="0.75">
+                    <p class="eyebrow">System Builder from Real Business Chaos</p>
+
+                    <h1>Я превращаю операционный хаос бизнеса в понятные цифровые системы.</h1>
+
+                    <p class="hero-lead">
+                        Я не пришёл в CRM/ERP из теории. Я пришёл из продаж, производства,
+                        монтажей, Авито, клиентских конфликтов, ручных расчётов и ежедневного
+                        управленческого хаоса малого бизнеса.
+                    </p>
+
+                    <p class="hero-line">
+                        Теперь я проектирую системы, которые помогают бизнесу видеть заявки,
+                        расчёты, производство, монтажи, деньги и слабые места в одной логике.
+                    </p>
+
+                    <div class="hero-actions" aria-label="Основные действия">
+                        <a class="button button--primary" href="#project">Посмотреть проект</a>
+                        <a class="button button--secondary" href="#contact">Связаться</a>
+                    </div>
+
+                    <div class="hero-proof-row" aria-label="Ключевые направления">
+                        <span>CRM/ERP</span>
+                        <span>AI-автоматизация</span>
+                        <span>Системный анализ</span>
+                        <span>Операционное управление</span>
+                    </div>
+                </div>
+
+                <div class="hero-scene__visual" data-depth="1.25">
+                    <figure class="founder-portrait" data-depth="1.05">
+                        <img src="avatar.jpg.png" alt="Антон Лопатин" />
+                        <figcaption>
+                            <strong>Антон Лопатин</strong>
+                            <span>Системный аналитик / CRM-ERP администратор / AI-оператор</span>
+                        </figcaption>
+                    </figure>
+
+                    <div class="operating-module operating-module--chaos" data-depth="1.45">
+                        <span class="module-label">Input</span>
+                        <strong>Excel · чаты · ручные расчёты</strong>
+                        <small>операционный шум</small>
+                    </div>
+
+                    <div class="operating-module operating-module--logic" data-depth="1.7">
+                        <span class="module-label">Process</span>
+                        <strong>аудит → структура → ТЗ → система</strong>
+                        <small>сборка логики</small>
+                    </div>
+
+                    <div class="operating-module operating-module--product" data-depth="1.3">
+                        <span class="module-label">Output</span>
+                        <strong>CRM/ERP · AI · контроль маржи</strong>
+                        <small>управляемая среда</small>
+                    </div>
+
+                    <div class="operating-module operating-module--signal" data-depth="1.9">
+                        <span class="module-label">Signal</span>
+                        <strong>Не угадываю боль рынка</strong>
+                        <small>я вышел из неё</small>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="identity" class="section section--identity">
+            <div class="section-header">
+                <p class="eyebrow">Кто я</p>
+                <h2>Не классический разработчик. Не теоретик. Практический системный человек.</h2>
+            </div>
+
+            <div class="identity-grid">
+                <article class="identity-card">
+                    <h3>Я видел бизнес снизу</h3>
+                    <p>
+                        Продажи, клиенты, касса, контент, маркетплейсы, Авито, входящие звонки,
+                        адаптация сотрудников и ежедневная операционная рутина.
+                    </p>
+                </article>
+
+                <article class="identity-card">
+                    <h3>Я видел бизнес изнутри</h3>
+                    <p>
+                        Замеры, монтажи, производство, логистика, ошибки менеджеров, ручные расчёты,
+                        потерянные заявки и решения, которые держатся на памяти людей.
+                    </p>
+                </article>
+
+                <article class="identity-card">
+                    <h3>Я начал собирать систему</h3>
+                    <p>
+                        Не потому что это модно, а потому что готового инструмента для реальной
+                        производственно-монтажной логики я не нашёл.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section id="thinking" class="section section--thinking">
+            <div class="section-header">
+                <p class="eyebrow">Как я мыслю</p>
+                <h2>Моя работа начинается не с кода. Она начинается с разбора хаоса.</h2>
+            </div>
+
+            <div class="thinking-flow" aria-label="Модель мышления">
+                <div class="thinking-step">
+                    <span>01</span>
+                    <h3>Увидеть хаос</h3>
+                    <p>Где теряются заявки, деньги, сроки, ответственность и контроль.</p>
+                </div>
+
+                <div class="thinking-step">
+                    <span>02</span>
+                    <h3>Разобрать систему</h3>
+                    <p>Понять, какие процессы связаны, где нет данных и где люди закрывают дыры вручную.</p>
+                </div>
+
+                <div class="thinking-step">
+                    <span>03</span>
+                    <h3>Найти слабые места</h3>
+                    <p>Вытащить узкие горлышки: расчёты, статусы, коммуникации, маржу, склад, монтажи.</p>
+                </div>
+
+                <div class="thinking-step">
+                    <span>04</span>
+                    <h3>Собрать механизм</h3>
+                    <p>Описать логику, правила, роли и интерфейс так, чтобы процесс работал без героизма.</p>
+                </div>
+            </div>
+
+            <blockquote class="statement">
+                CRM для меня — не таблица клиентов. Это нервная система бизнеса.
+            </blockquote>
+        </section>
+
+        <section id="experience" class="section section--experience">
+            <div class="section-header">
+                <p class="eyebrow">Опыт</p>
+                <h2>6+ лет в продажах, операционке, маркетплейсах, управлении и автоматизации.</h2>
+            </div>
+
+            <div class="experience-list">
+                <article class="experience-item">
+                    <div class="experience-item__meta">
+                        <span>2022 — 2026</span>
+                        <span>Первый Потолочный / Первая Фабрика Мягких Окон</span>
+                    </div>
+                    <div class="experience-item__body">
+                        <h3>Операционный директор / системный разработчик / CRM-ERP администратор</h3>
+                        <p>
+                            Разработка и внедрение собственной CRM/ERP логики, автоматизация процессов,
+                            контроль заявок, расчётов, монтажей, коммуникаций и производственной логики.
+                        </p>
+                        <ul>
+                            <li>Разработка production MVP CRM/ERP для производственно-монтажного бизнеса.</li>
+                            <li>Системный аудит процессов: от рекламы и лида до расчёта, производства и монтажа.</li>
+                            <li>Работа с Avito, рекламными каналами, клиентскими потоками и контентом.</li>
+                            <li>Создание ТЗ, логики интерфейсов, сценариев автоматизации и AI-assisted workflow.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="experience-item">
+                    <div class="experience-item__meta">
+                        <span>2021 — 2022</span>
+                        <span>Главный пассажир</span>
+                    </div>
+                    <div class="experience-item__body">
+                        <h3>Администратор магазина</h3>
+                        <p>
+                            Организация работы магазина, продажи, кассовая отчётность, логистика,
+                            маркетплейсы, социальные сети, Авито, Юла, контент и адаптация персонала.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="experience-item">
+                    <div class="experience-item__meta">
+                        <span>2019 — 2021</span>
+                        <span>Сеть комиссионных магазинов, ФилКом</span>
+                    </div>
+                    <div class="experience-item__body">
+                        <h3>Продавец-консультант</h3>
+                        <p>
+                            Активные продажи, консультации, касса, оценка товара, подготовка к продаже,
+                            контроль цен, входящие звонки, поставщики и работа с площадками объявлений.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="capabilities" class="section section--capabilities">
+            <div class="section-header">
+                <p class="eyebrow">Что я закрываю</p>
+                <h2>Мои компетенции находятся на стыке бизнеса, продукта, процессов и AI-инструментов.</h2>
+            </div>
+
+            <div class="capability-grid">
+                <article class="capability-card">
+                    <span>01</span>
+                    <h3>CRM/ERP логика</h3>
+                    <p>Проектирование сущностей, статусов, ролей, расчётов, карточек клиентов и потоков данных.</p>
+                </article>
+
+                <article class="capability-card">
+                    <span>02</span>
+                    <h3>Системный анализ</h3>
+                    <p>Поиск узких мест, разбор AS IS / TO BE, описание правил и превращение хаоса в структуру.</p>
+                </article>
+
+                <article class="capability-card">
+                    <span>03</span>
+                    <h3>AI-оператор</h3>
+                    <p>Использование AI для анализа, ТЗ, аудита, документации, прототипирования и ускорения разработки.
+                    </p>
+                </article>
+
+                <article class="capability-card">
+                    <span>04</span>
+                    <h3>Операционное управление</h3>
+                    <p>Понимание продаж, монтажей, производства, логистики, клиентского пути и нагрузки на команду.</p>
+                </article>
+
+                <article class="capability-card">
+                    <span>05</span>
+                    <h3>Avito и клиентские потоки</h3>
+                    <p>Работа с объявлениями, позиционированием, входящими заявками, контентом и первичной конверсией.
+                    </p>
+                </article>
+
+                <article class="capability-card">
+                    <span>06</span>
+                    <h3>Техническая документация</h3>
+                    <p>Подготовка ТЗ, логических карт, требований, сценариев и контрольных списков для разработчиков.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section id="project" class="section section--project">
+            <div class="section-header">
+                <p class="eyebrow">Главный проект</p>
+                <h2>Easy Mo Core — ERP/CRM для производственно-монтажного бизнеса.</h2>
+                <p>
+                    Первая боевая ниша — мягкие окна, ПВХ-шторы и тенты. Это не учебная демка,
+                    а система, которая родилась из реальной операционной боли.
+                </p>
+            </div>
+
+            <div class="project-layout">
+                <article class="project-summary">
+                    <h3>Что делает система</h3>
+                    <p>
+                        Easy Mo Core связывает клиента, замер, расчёт, производство, монтаж,
+                        файлы, статусы, цены, себестоимость и прибыль в одну управляемую среду.
+                    </p>
+
+                    <ul>
+                        <li>Карточка клиента с историей, статусами и файлами.</li>
+                        <li>Расчёт стоимости изделий по размерам, геометрии, материалам и крепежу.</li>
+                        <li>Контроль себестоимости, перерасхода и прибыли по заказу.</li>
+                        <li>Kanban-доска, архив, поиск, календарь монтажей и загрузка файлов.</li>
+                        <li>Защита исторических заказов от пересчёта при изменении цен.</li>
+                        <li>Фундамент для multi-tenant SaaS и дальнейшей AI-ERP платформы.</li>
+                    </ul>
+                </article>
+
+                <aside class="project-facts" aria-label="Факты о проекте">
+                    <div class="fact-card">
+                        <span>Stage</span>
+                        <strong>Production MVP</strong>
+                    </div>
+
+                    <div class="fact-card">
+                        <span>Stack</span>
+                        <strong>Next.js · React · TypeScript · Prisma · PostgreSQL · S3</strong>
+                    </div>
+
+                    <div class="fact-card">
+                        <span>Origin</span>
+                        <strong>Создан изнутри реального бизнеса</strong>
+                    </div>
+
+                    <div class="fact-card">
+                        <span>Direction</span>
+                        <strong>AI-ERP для малого и среднего бизнеса</strong>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="philosophy" class="section section--philosophy">
+            <div class="section-header">
+                <p class="eyebrow">Почему это важно</p>
+                <h2>Малый бизнес часто держится не на системе, а на людях, которые уже перегружены.</h2>
+            </div>
+
+            <div class="philosophy-grid">
+                <article>
+                    <h3>Проблема</h3>
+                    <p>
+                        Excel, чаты, ручные расчёты, потерянные заявки, забытые клиенты,
+                        монтажи без прозрачности, производство без связки с продажами.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Моя логика</h3>
+                    <p>
+                        Сначала нужно понять реальный процесс. Потом описать правила.
+                        Потом собрать систему, где данные проходят через бизнес без потерь.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Вектор</h3>
+                    <p>
+                        Создать доступную AI-native ERP/CRM среду, которая помогает обычному
+                        предпринимателю видеть бизнес целиком и управлять им спокойнее.
+                    </p>
+                </article>
+            </div>
+
+            <blockquote class="statement statement--large">
+                Я не угадываю боль рынка. Я из неё вышел.
+            </blockquote>
+        </section>
+
+        <section id="collaboration" class="section section--collaboration">
+            <div class="section-header">
+                <p class="eyebrow">Форматы сотрудничества</p>
+                <h2>Сайт должен работать и как дополнение к резюме, и как карточка для партнёров.</h2>
+            </div>
+
+            <div class="collaboration-grid">
+                <article class="collaboration-card">
+                    <h3>Удалённая работа</h3>
+                    <p>
+                        Системный аналитик, CRM/ERP администратор, AI-оператор,
+                        координатор цифровых процессов или помощник по автоматизации бизнеса.
+                    </p>
+                </article>
+
+                <article class="collaboration-card">
+                    <h3>Проектная работа</h3>
+                    <p>
+                        Аудит процессов, описание логики, постановка ТЗ, подготовка структуры CRM,
+                        разбор клиентского пути и автоматизация рутинных операций.
+                    </p>
+                </article>
+
+                <article class="collaboration-card">
+                    <h3>Партнёрство</h3>
+                    <p>
+                        Easy Mo Core открыт для людей, которым интересно строить реальный B2B-продукт:
+                        дизайн, разработка, маркетинг, продажи, внедрение.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section id="final" class="section section--final">
+            <div class="final-statement">
+                <p class="eyebrow">Core statement</p>
+                <h2>
+                    Я не просто настраиваю инструменты.
+                    Я помогаю превращать ручной, перегруженный бизнес в систему,
+                    где видны данные, деньги, люди и слабые места.
+                </h2>
+            </div>
+        </section>
+
+        <section id="contact" class="section section--contact">
+            <div class="contact-panel">
+                <div class="contact-panel__text">
+                    <p class="eyebrow">Связь</p>
+                    <h2>Если вам нужен человек, который умеет разбирать хаос и собирать систему — напишите мне.</h2>
+                    <p>
+                        Для работы, проектного сотрудничества, обсуждения Easy Mo Core,
+                        партнёрства или первого разговора без обязательств.
+                    </p>
+                </div>
+
+                <div id="dynamic-contacts" class="contact-panel__contacts">
+                    <!-- Контакты можно подставлять из config.js -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <span>© 2026 Антон Лопатин</span>
+        <span>Digital founder card / systems builder profile</span>
+    </footer>
+
+</body>
+
+</html>

@@ -1,271 +1,372 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Антон Лопатин // Архитектура бизнес-систем и автоматизация</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="config.js" defer></script>
-    <script src="matrix-bg.js" defer></script>
-    <script src="animation.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Антон Лопатин — Systems Builder</title>
+  <meta name="description" content="Cinematic digital presence Антона Лопатина: CRM/ERP, системный анализ, AI-оператор, операционная архитектура." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <div class="system-backdrop">
-        <canvas id="cyber-background"></canvas>
-        <div class="noise-overlay"></div>
-        <div class="system-grid-layer"></div>
-        <div class="parallax-glow-orb orb-primary" data-velocity="0.15"></div>
-        <div class="parallax-glow-orb orb-secondary" data-velocity="0.08"></div>
+  <div class="prelude" id="prelude" aria-hidden="true">
+    <div class="prelude__grain"></div>
+    <div class="prelude__core"></div>
+    <div class="prelude__line"></div>
+  </div>
+
+  <div class="cursor-orb" id="cursorOrb" aria-hidden="true"></div>
+
+  <div class="world" id="world">
+    <div class="atmosphere" aria-hidden="true">
+      <div class="deep-field layer" data-depth="0.10"></div>
+      <div class="light-volume light-volume--one layer" data-depth="0.22"></div>
+      <div class="light-volume light-volume--two layer" data-depth="0.34"></div>
+      <div class="haze haze--back layer" data-depth="0.18"></div>
+      <div class="haze haze--front layer" data-depth="0.52"></div>
+      <div class="scanline"></div>
+      <div class="grain"></div>
+      <div class="vignette"></div>
     </div>
 
-    <div class="sys-header">
-        <div id="sys-code" class="caption-mono">[AL_CORE // LOG_INIT]</div>
-        <div id="sys-status" class="caption-mono">SYSTEM_READY</div>
-    </div>
+    <header class="system-bar" id="systemBar">
+      <a href="#hero" class="system-bar__identity">
+        <span>Anton Lopatin</span>
+        <small>Operational Systems Builder</small>
+      </a>
+      <nav class="system-bar__nav" aria-label="Основная навигация">
+        <a href="#thinking">Мышление</a>
+        <a href="#experience">Опыт</a>
+        <a href="#project">Easy Mo Core</a>
+        <a href="#contact">Контакт</a>
+      </nav>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span></span>
+        Ambient
+      </button>
+    </header>
 
-    <main class="content-viewport">
+    <main>
 
-        <section class="hero-scene">
-            <div class="hero-content">
-                <div class="badge-tech reveal-element">PRO_ARCHITECT_V2</div>
-                <h1 class="hero-title reveal-element">
-                    Я навожу порядок там, <br>
-                    где бизнес держится <br>
-                    <span>на Excel, чатах и памяти.</span>
-                </h1>
-                <p class="hero-subtitle reveal-element">
-                    Проектирую CRM/ERP-логику, AI-автоматизацию и производственные системы для малого бизнеса, который устал работать на хаосе.
-                </p>
-                
-                <div class="hero-meta reveal-element">
-                    <div class="founder-identity">
-                        <div class="founder-name">Антон Лопатин</div>
-                        <div class="founder-role caption-mono">Системный аналитик // CRM-ERP // AI-автоматизация</div>
-                    </div>
-                    <div id="hero-live-contacts" class="hero-cta-group">
-                        </div>
-                </div>
+      <section class="hero" id="hero">
+        <div class="hero__camera" id="heroCamera">
+          <div class="hero__shadow-field layer" data-depth="0.16"></div>
+
+          <div class="hero__portrait-wrap layer" data-depth="0.62">
+            <div class="portrait-shell">
+              <img src="assets/portrait-hero.png" alt="Антон Лопатин" class="portrait-shell__image" />
+              <div class="portrait-shell__light"></div>
+              <div class="portrait-shell__mist"></div>
+              <div class="portrait-shell__edge"></div>
             </div>
+          </div>
 
-            <div class="hero-portrait-wrapper reveal-element">
-                <div class="portrait-container">
-                    <img src="avatar.jpg.png" alt="Антон Лопатин" class="founder-portrait-img">
-                    <div class="portrait-glass-mask"></div>
-                    <div class="portrait-gradient-overlay"></div>
-                </div>
-                <div class="floating-ui-shard shard-1" data-velocity="0.25">[ CRM / ERP ]</div>
-                <div class="floating-ui-shard shard-2" data-velocity="0.12">[ AI Automation ]</div>
-                <div class="floating-ui-shard shard-3" data-velocity="0.30">Avito → CRM → Order</div>
+          <div class="system-signal system-signal--one layer" data-depth="0.88">
+            <span>Lead captured</span>
+            <strong>request parsed</strong>
+          </div>
+          <div class="system-signal system-signal--two layer" data-depth="1.02">
+            <span>Geometry validated</span>
+            <strong>margin protected</strong>
+          </div>
+          <div class="system-signal system-signal--three layer" data-depth="0.78">
+            <span>Production synced</span>
+            <strong>workflow aligned</strong>
+          </div>
+          <div class="system-signal system-signal--four layer" data-depth="1.18">
+            <span>AI audit</span>
+            <strong>logic checked</strong>
+          </div>
+
+          <div class="hero__content layer" data-depth="0.42">
+            <p class="eyebrow reveal">System Builder from Real Business Chaos</p>
+            <h1 class="reveal">Я превращаю операционный хаос бизнеса в цифровые системы.</h1>
+            <p class="hero__lead reveal">
+              Продажи, производство, монтажи, Авито, ручные расчёты и управленческий шум —
+              это не теория. Это среда, из которой я собрал свой подход к CRM, ERP и AI-автоматизации.
+            </p>
+            <div class="hero__actions reveal">
+              <a class="button button--primary" href="#project">Посмотреть систему</a>
+              <a class="button button--ghost" href="#thinking">Как я мыслю</a>
             </div>
-        </section>
+          </div>
 
-        <section class="cinematic-statement-scene">
-            <div class="statement-container reveal-element">
-                <span class="caption-mono uppercase text-muted">// Внутренний манифест</span>
-                <p class="statement-text">
-                    Я не искал красивую CRM. <br>
-                    Я пытался выжить внутри <span>хаоса потерь.</span>
-                </p>
+          <div class="hero__bottom-line">
+            <span>CRM/ERP</span>
+            <span>AI-assisted workflow</span>
+            <span>Business process analysis</span>
+            <span>Operational architecture</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec-content" id="identity">
+        <p class="eyebrow">Identity</p>
+        <h2 class="sec-h2">Не классический разработчик. Не теоретик. Практический системный человек.</h2>
+        <div class="triple-grid">
+          <article>
+            <span class="sc-num">I</span>
+            <strong class="sc-title">Видел бизнес снизу</strong>
+            <small class="sc-body">Продажи, клиенты, касса, контент, маркетплейсы, Авито, входящие звонки и ежедневная операционная рутина.</small>
+          </article>
+          <article>
+            <span class="sc-num">II</span>
+            <strong class="sc-title">Видел бизнес изнутри</strong>
+            <small class="sc-body">Замеры, монтажи, производство, ошибки менеджеров, ручные расчёты, потерянные заявки и решения, которые держатся на памяти людей.</small>
+          </article>
+          <article>
+            <span class="sc-num">III</span>
+            <strong class="sc-title">Начал собирать систему</strong>
+            <small class="sc-body">Не потому что модно. Потому что готового инструмента для реальной производственно-монтажной логики я не нашёл.</small>
+          </article>
+        </div>
+      </section>
+
+      <section class="cinema-section thinking" id="thinking">
+        <div class="section-media section-media--left">
+          <img src="assets/portrait-thinking.png" alt="Антон Лопатин — портрет в чёрно-белой стилистике" />
+        </div>
+        <div class="section-copy">
+          <p class="eyebrow">Thinking model</p>
+          <h2>Моя работа начинается не с кода. Она начинается с разбора хаоса.</h2>
+          <p>
+            Я ищу, где теряются заявки, сроки, деньги и ответственность. Потом раскладываю процесс
+            на правила, роли, статусы, данные и интерфейсы — чтобы бизнес перестал держаться на памяти людей.
+          </p>
+          <div class="flow">
+            <article><span>01</span><strong>Увидеть шум</strong><small>заявки, чаты, Excel, ручные решения</small></article>
+            <article><span>02</span><strong>Собрать карту</strong><small>процессы, роли, ошибки, узкие места</small></article>
+            <article><span>03</span><strong>Зафиксировать логику</strong><small>правила, расчёты, статусы, сценарии</small></article>
+            <article><span>04</span><strong>Превратить в систему</strong><small>CRM/ERP, AI, контроль и прозрачность</small></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec-content" id="experience">
+        <p class="eyebrow">Experience</p>
+        <h2 class="sec-h2">6+ лет в продажах, операционке, маркетплейсах, управлении и автоматизации.</h2>
+        <div class="exp-list">
+
+          <article class="exp-item">
+            <div class="exp-item__meta">
+              <span class="exp-item__year">2022 — 2026</span>
+              <span class="exp-item__co">Первый Потолочный / Первая Фабрика Мягких Окон</span>
             </div>
-        </section>
-
-        <section class="diagnostic-scene">
-            <div class="scene-header reveal-element">
-                <h2 class="scene-title">Диагностика хаоса & Проектирование решений</h2>
-                <p class="scene-desc">Разделяем симптомы деградации процессов и архитектурные изменения.</p>
+            <div class="exp-item__body">
+              <strong>Операционный директор / системный разработчик / CRM-ERP администратор</strong>
+              <p>Разработка и внедрение собственной CRM/ERP логики, автоматизация процессов, контроль заявок, расчётов, монтажей и производственной логики.</p>
+              <ul>
+                <li>Разработка production MVP CRM/ERP для производственно-монтажного бизнеса</li>
+                <li>Системный аудит процессов: от рекламы и лида до расчёта, производства и монтажа</li>
+                <li>Работа с Avito, рекламными каналами, клиентскими потоками и контентом</li>
+                <li>Создание ТЗ, логики интерфейсов, сценариев автоматизации и AI-assisted workflow</li>
+              </ul>
             </div>
+          </article>
 
-            <div class="diagnostic-console">
-                <div class="console-panel panel-dark reveal-element">
-                    <div class="panel-header">
-                        <span class="status-dot dot-red"></span>
-                        <span class="caption-mono uppercase">Бизнес-патологии / Потери денег</span>
-                    </div>
-                    <div class="panel-body">
-                        <div class="diagnostic-row">
-                            <span class="row-num caption-mono">01</span>
-                            <p>Заявки «забываются» в мессенджерах, клиенты уходят к тем, кто ответил на 5 минут быстрее.</p>
-                        </div>
-                        <div class="diagnostic-row">
-                            <span class="row-num caption-mono">02</span>
-                            <p>Менеджеры вручную рассчитывают сложные заказы, допуская ошибки в маржинальности.</p>
-                        </div>
-                        <div class="diagnostic-row">
-                            <span class="row-num caption-mono">03</span>
-                            <p>Собственник не видит реальной прибыли и управляет компанией на основе интуиции.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="console-panel panel-premium reveal-element">
-                    <div class="panel-header">
-                        <span class="status-dot dot-green"></span>
-                        <span class="caption-mono uppercase">Архитектура твердых систем</span>
-                    </div>
-                    <div class="panel-body">
-                        <div class="diagnostic-row">
-                            <span class="row-num caption-mono">OK</span>
-                            <p>Единое сквозное окно коммуникации: жесткий контроль регламента ответа и авто-распределение.</p>
-                        </div>
-                        <div class="diagnostic-row">
-                            <span class="row-num caption-mono">OK</span>
-                            <p>Внедрение цифровых калькуляторов и конфигураторов: автоматический расчет себестоимости за 3 секунды.</p>
-                        </div>
-                        <div class="diagnostic-row">
-                            <span class="row-num caption-mono">OK</span>
-                            <p>Сведение всех потоков в автоматические сквозные дашборды финансового и складского учета.</p>
-                        </div>
-                    </div>
-                </div>
+          <article class="exp-item">
+            <div class="exp-item__meta">
+              <span class="exp-item__year">2021 — 2022</span>
+              <span class="exp-item__co">Главный пассажир</span>
             </div>
-        </section>
-
-        <section class="artifact-scene">
-            <div class="scene-header reveal-element">
-                <span class="caption-mono text-emerald">// Реальные производственные артефакты</span>
-                <h2 class="scene-title">Кейсы // Развернутые экосистемы</h2>
+            <div class="exp-item__body">
+              <strong>Администратор магазина</strong>
+              <p>Организация работы магазина, продажи, кассовая отчётность, логистика, маркетплейсы, Авито, Юла, контент и адаптация персонала.</p>
             </div>
+          </article>
 
-            <div class="case-monolith reveal-element">
-                <div class="case-info">
-                    <div class="case-meta-tags">
-                        <span class="tag-chip">Производство</span>
-                        <span class="tag-chip">CRM/ERP</span>
-                        <span class="tag-chip">Мягкие окна</span>
-                    </div>
-                    <h3>Автоматизация завода мягких окон</h3>
-                    <p class="case-description">
-                        Создана кастомная ERP-система, полностью исключившая человеческий фактор из цепочки «Замер — Расчет — Производство — Монтаж».
-                    </p>
-                    
-                    <div class="proof-chips-grid">
-                        <div class="proof-chip">
-                            <span class="chip-label caption-mono">РАСЧЕТ ГЕОМЕТРИИ</span>
-                            <span class="chip-value">Авто-вычисление площади сложных трапеций</span>
-                        </div>
-                        <div class="proof-chip">
-                            <span class="chip-label caption-mono">ЗАЩИТА ЦЕНЫ</span>
-                            <span class="chip-value">Блокировка ручных скидок мимо калькулятора</span>
-                        </div>
-                        <div class="proof-chip">
-                            <span class="chip-label caption-mono">КАРТА ДАННЫХ</span>
-                            <span class="chip-value">Автогенерация ТЗ для цеха раскроя ткани</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="case-visual-slot">
-                    <div class="screenshot-frame">
-                        <div class="frame-bar">
-                            <span class="circle-btn"></span><span class="circle-btn"></span><span class="circle-btn"></span>
-                            <span class="frame-title caption-mono">production_dashboard_v2.png</span>
-                        </div>
-                        <div class="screenshot-placeholder">
-                            <span class="placeholder-label caption-mono">[ REAL SCREENSHOT SLOT: Замените на скриншот CRM / Дашборда ]</span>
-                        </div>
-                    </div>
-                </div>
+          <article class="exp-item">
+            <div class="exp-item__meta">
+              <span class="exp-item__year">2019 — 2021</span>
+              <span class="exp-item__co">ФилКом</span>
             </div>
-        </section>
-
-        <section class="roadmap-scene">
-            <div class="scene-header reveal-element">
-                <h2 class="scene-title">Инженерный стек & Этапы эволюции</h2>
-                <p class="scene-desc">Статусы развертывания технологических модулей в проектах.</p>
+            <div class="exp-item__body">
+              <strong>Продавец-консультант</strong>
+              <p>Активные продажи, консультации, касса, оценка товара, контроль цен, входящие звонки, поставщики и работа с площадками объявлений.</p>
             </div>
+          </article>
 
-            <div class="timeline-container">
-                <div class="timeline-line"></div>
-                
-                <div class="timeline-item reveal-element">
-                    <div class="timeline-dot status-active"></div>
-                    <div class="timeline-meta">
-                        <span class="status-badge active-badge caption-mono">ACTIVE BUILD</span>
-                        <h4>Интеграция Ядерных CRM & Складских ERP</h4>
-                    </div>
-                    <div class="timeline-desc">Аудит хаоса, разбор рутины, проектирование баз данных и логики прав доступа. Внедрение AmoCRM, Bitrix24, МойСклад.</div>
-                </div>
+        </div>
+      </section>
 
-                <div class="timeline-item reveal-element">
-                    <div class="timeline-dot status-research"></div>
-                    <div class="timeline-meta">
-                        <span class="status-badge research-badge caption-mono">RESEARCH</span>
-                        <h4>ИИ-Агенты & Автоматизация Смыслов</h4>
-                    </div>
-                    <div class="timeline-desc">Подключение LLM (GPT-4/Claude) для разбора сложных ТЗ, классификации лидов, автоматической генерации ответов и саммаризации созвонов.</div>
-                </div>
+      <section class="sec-content" id="capabilities">
+        <p class="eyebrow">Capabilities</p>
+        <h2 class="sec-h2">Мои компетенции на стыке бизнеса, продукта, процессов и AI-инструментов.</h2>
+        <div class="six-grid">
+          <article>
+            <span class="sc-num">01</span>
+            <strong class="sc-title">CRM/ERP логика</strong>
+            <small class="sc-body">Проектирование сущностей, статусов, ролей, расчётов, карточек клиентов и потоков данных.</small>
+          </article>
+          <article>
+            <span class="sc-num">02</span>
+            <strong class="sc-title">Системный анализ</strong>
+            <small class="sc-body">Поиск узких мест, разбор AS IS / TO BE, описание правил и превращение хаоса в структуру.</small>
+          </article>
+          <article>
+            <span class="sc-num">03</span>
+            <strong class="sc-title">AI-оператор</strong>
+            <small class="sc-body">Использование AI для анализа, ТЗ, аудита, документации, прототипирования и ускорения разработки.</small>
+          </article>
+          <article>
+            <span class="sc-num">04</span>
+            <strong class="sc-title">Операционное управление</strong>
+            <small class="sc-body">Понимание продаж, монтажей, производства, логистики, клиентского пути и нагрузки на команду.</small>
+          </article>
+          <article>
+            <span class="sc-num">05</span>
+            <strong class="sc-title">Avito и клиентские потоки</strong>
+            <small class="sc-body">Работа с объявлениями, позиционированием, входящими заявками, контентом и первичной конверсией.</small>
+          </article>
+          <article>
+            <span class="sc-num">06</span>
+            <strong class="sc-title">Техническая документация</strong>
+            <small class="sc-body">Подготовка ТЗ, логических карт, требований, сценариев и контрольных списков для разработчиков.</small>
+          </article>
+        </div>
+      </section>
 
-                <div class="timeline-item reveal-element">
-                    <div class="timeline-dot status-next"></div>
-                    <div class="timeline-meta">
-                        <span class="status-badge next-badge caption-mono">NEXT PHASE</span>
-                        <h4>Сквозная BI-Аналитика & Предиктивный Учет</h4>
-                    </div>
-                    <div class="timeline-desc">Сборка кастомных дашбордов (Data Studio / Grafana / SQL) для отслеживания LTV, CAC, чистой маржинальности и загрузки производства в реальном времени.</div>
-                </div>
+      <section class="cinema-section project" id="project">
+        <div class="section-copy">
+          <p class="eyebrow">Main project</p>
+          <h2>Easy Mo Core — ERP/CRM изнутри реального производственно-монтажного бизнеса.</h2>
+          <p>
+            Система связывает клиента, замер, расчёт, производство, монтаж, файлы, статусы,
+            себестоимость и прибыль в одну управляемую среду.
+          </p>
+          <div class="project-grid">
+            <article><span>Stage</span><strong>Production MVP</strong></article>
+            <article><span>Stack</span><strong>Next.js · Prisma · S3</strong></article>
+            <article><span>Origin</span><strong>Реальная операционная боль</strong></article>
+            <article><span>Direction</span><strong>AI-native ERP for SMB</strong></article>
+          </div>
+        </div>
+        <div class="section-media section-media--right">
+          <img src="assets/portrait-project.png" alt="Антон Лопатин работает за ноутбуком" />
+          <div class="media-system">
+            <span>client.card.updated</span>
+            <span>snapshot.locked</span>
+            <span>mounting.date.synced</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec-content" id="project-detail">
+        <p class="eyebrow">What it does</p>
+        <h2 class="sec-h2">Не учебная демка. Система, которая родилась из реальной операционной боли.</h2>
+        <div class="exp-list">
+          <article class="exp-item">
+            <div class="exp-item__meta">
+              <span class="exp-item__year">Client</span>
+              <span class="exp-item__co">Карточка клиента</span>
             </div>
-        </section>
-
-        <section class="workflow-scene">
-            <div class="scene-header reveal-element">
-                <span class="caption-mono uppercase">// Как строится архитектура</span>
-                <h2 class="scene-title">Протокол взаимодействия</h2>
+            <div class="exp-item__body">
+              <strong>История, статусы и файлы в одном месте</strong>
+              <p>Полная карточка с хронологией заказов, вложенными файлами, статусами и коммуникацией. Ничего не теряется — всё остаётся привязанным к клиенту.</p>
             </div>
-
-            <div class="process-rail">
-                <div class="rail-step reveal-element">
-                    <div class="step-num caption-mono">01</div>
-                    <h5>Аудит хаоса</h5>
-                    <p>Погружаюсь в бизнес-процессы, нахожу узкие горлышки, где компания теряет лиды, время и деньги.</p>
-                </div>
-                <div class="rail-step reveal-element">
-                    <div class="step-num caption-mono">02</div>
-                    <h5>Архитектура системы</h5>
-                    <p>Создаю детальную логическую карту сущностей, связей и будущих автоматизаций до написания кода.</p>
-                </div>
-                <div class="rail-step reveal-element">
-                    <div class="step-num caption-mono">03</div>
-                    <h5>Внедрение и запуск</h5>
-                    <p>Разворачиваю экосистему, настраиваю роботов, подключаю ИИ-агентов и обучаю команду работать в системе.</p>
-                </div>
+          </article>
+          <article class="exp-item">
+            <div class="exp-item__meta">
+              <span class="exp-item__year">Finance</span>
+              <span class="exp-item__co">Расчёты и маржа</span>
             </div>
-        </section>
-
-        <section class="final-manifesto-scene">
-            <div class="manifesto-wrapper reveal-element">
-                <p class="manifesto-huge-text">
-                    Я не «настраиваю CRM». <br>
-                    Я нахожу места, где бизнес теряет деньги, клиентов и управление — <br>
-                    <span>и собираю систему, которая возвращает контроль.</span>
-                </p>
+            <div class="exp-item__body">
+              <strong>Расчёт стоимости, себестоимости и прибыли по каждому заказу</strong>
+              <p>Автоматический расчёт по размерам, геометрии, материалам и крепежу. Контроль перерасхода и прибыли. Исторические заказы защищены от пересчёта при изменении цен.</p>
             </div>
-        </section>
-
-        <section class="contact-scene">
-            <div class="contact-terminal-box reveal-element">
-                <div class="terminal-header">
-                    <span class="caption-mono">EXECUTE: INITIALIZE_PROJECT_LOGIC</span>
-                </div>
-                <div class="terminal-body">
-                    <h3>Запустить проектирование</h3>
-                    <p>Если вы готовы перевести компанию с ручного хаоса на системные рельсы — свяжитесь со мной любым удобным способом.</p>
-                    
-                    <div id="dynamic-contacts" class="contacts-grid">
-                        </div>
-                </div>
+          </article>
+          <article class="exp-item">
+            <div class="exp-item__meta">
+              <span class="exp-item__year">Ops</span>
+              <span class="exp-item__co">Производство и монтажи</span>
             </div>
-        </section>
+            <div class="exp-item__body">
+              <strong>Kanban, архив, поиск, календарь монтажей и загрузка файлов</strong>
+              <p>Полный цикл от замера до монтажа в одной логике. Статусы синхронизированы между отделами — производство видит то же, что видят продажи.</p>
+            </div>
+          </article>
+        </div>
+        <div class="sec-stack-line">
+          <span>Next.js</span>
+          <span>React</span>
+          <span>TypeScript</span>
+          <span>Prisma</span>
+          <span>PostgreSQL</span>
+          <span>S3</span>
+        </div>
+      </section>
+
+      <section class="manifest">
+        <p class="eyebrow">Core statement</p>
+        <h2>Я не угадываю боль рынка. Я из неё вышел.</h2>
+        <p>
+          Поэтому я не просто настраиваю инструменты. Я помогаю превращать ручной,
+          перегруженный бизнес в систему, где видны данные, деньги, люди и слабые места.
+        </p>
+      </section>
+
+      <section class="sec-content" id="philosophy">
+        <p class="eyebrow">Why it matters</p>
+        <h2 class="sec-h2">Малый бизнес часто держится не на системе, а на людях, которые уже перегружены.</h2>
+        <div class="triple-grid">
+          <article>
+            <span class="sc-num">Проблема</span>
+            <strong class="sc-title">Excel, чаты и ручная логика</strong>
+            <small class="sc-body">Потерянные заявки, забытые клиенты, монтажи без прозрачности, производство без связки с продажами. Бизнес работает на героизме конкретных людей, а не на системе.</small>
+          </article>
+          <article>
+            <span class="sc-num">Логика</span>
+            <strong class="sc-title">Сначала понять, потом строить</strong>
+            <small class="sc-body">Сначала — реальный процесс. Потом — правила. Потом — система, где данные проходят через бизнес без потерь и без ручного контроля на каждом шагу.</small>
+          </article>
+          <article>
+            <span class="sc-num">Вектор</span>
+            <strong class="sc-title">AI-native ERP для обычного предпринимателя</strong>
+            <small class="sc-body">Среда, которая помогает видеть бизнес целиком — заявки, деньги, производство, монтажи, маржу — и управлять им без армии аналитиков.</small>
+          </article>
+        </div>
+      </section>
+
+      <section class="sec-content" id="collaboration">
+        <p class="eyebrow">Collaboration</p>
+        <h2 class="sec-h2">Готов к удалённой работе, проектному сотрудничеству и партнёрству.</h2>
+        <div class="triple-grid">
+          <article>
+            <span class="sc-num">Remote</span>
+            <strong class="sc-title">Удалённая работа</strong>
+            <small class="sc-body">Системный аналитик, CRM/ERP администратор, AI-оператор, координатор цифровых процессов или помощник по автоматизации бизнеса.</small>
+          </article>
+          <article>
+            <span class="sc-num">Project</span>
+            <strong class="sc-title">Проектная работа</strong>
+            <small class="sc-body">Аудит процессов, описание логики, постановка ТЗ, подготовка структуры CRM, разбор клиентского пути и автоматизация рутинных операций.</small>
+          </article>
+          <article>
+            <span class="sc-num">Partner</span>
+            <strong class="sc-title">Партнёрство</strong>
+            <small class="sc-body">Easy Mo Core открыт для людей, которым интересно строить реальный B2B-продукт: дизайн, разработка, маркетинг, продажи, внедрение.</small>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="contact__panel">
+          <p class="eyebrow">Contact</p>
+          <h2>Если вам нужен человек, который умеет разбирать хаос и собирать систему — напишите мне.</h2>
+          <p class="contact__sub">Для работы, проектного сотрудничества, обсуждения Easy Mo Core, партнёрства или первого разговора без обязательств.</p>
+          <div class="contact__links">
+            <a href="mailto:alopatin446@gmail.com">alopatin446@gmail.com</a>
+            <a href="https://t.me/alopatin446" target="_blank" rel="noreferrer">@alopatin446</a>
+          </div>
+        </div>
+      </section>
 
     </main>
+  </div>
 
-    <footer class="sys-footer caption-mono">
-        <div>© 2026 АНТОН ЛОПАТИН. СИСТЕМНЫЙ ПОРЯДОК.</div>
-        <div>[DESIGN_SYSTEM_V2]</div>
-    </footer>
-
+  <script src="animation.js"></script>
 </body>
 </html>
