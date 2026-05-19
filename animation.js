@@ -6,13 +6,14 @@
   const soundButton = document.getElementById('soundToggle');
 
   let mx = 0, my = 0, tx = 0, ty = 0, scrollY = window.scrollY;
-  let audioCtx = null, osc = null, gain = null;
+  let ambientAudio = null;
 
   const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
   window.addEventListener('mousemove', (e) => {
     mx = (e.clientX / window.innerWidth - 0.5) * 2;
     my = (e.clientY / window.innerHeight - 0.5) * 2;
+
     if (cursor) {
       cursor.style.transform = `translate3d(${e.clientX - 180}px, ${e.clientY - 180}px, 0)`;
     }
@@ -44,6 +45,7 @@
 
     requestAnimationFrame(frame);
   }
+
   frame();
 
   const observer = new IntersectionObserver((entries) => {
@@ -52,9 +54,10 @@
     });
   }, { threshold: 0.18 });
 
-  document.querySelectorAll('.cinema-section, .manifest, .contact__panel').forEach((el) => observer.observe(el));
+  document
+    .querySelectorAll('.cinema-section, .manifest, .contact__panel')
+    .forEach((el) => observer.observe(el));
 
-  // Новые контентные секции — reveal при скролле
   const secObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -70,43 +73,67 @@
     secObserver.observe(el);
   });
 
-  function startAmbient() {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    osc = audioCtx.createOscillator();
-    gain = audioCtx.createGain();
+  function initAmbientAudio() {
+    if (ambientAudio) return;
 
-    const filter = audioCtx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 180;
+    ambientAudio = new Audio('audio/ambient.mp3');
+    ambientAudio.loop = true;
+    ambientAudio.volume = 0.18;
+    ambientAudio.preload = 'auto';
+  }
 
-    osc.type = 'sine';
-    osc.frequency.value = 48;
-    gain.gain.value = 0.018;
+  async function startAmbient() {
+    initAmbientAudio();
 
-    osc.connect(filter);
-    filter.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.start();
+    try {
+      ambientAudio.currentTime = ambientAudio.currentTime || 0;
+      await ambientAudio.play();
+    } catch (e) {
+      console.warn('Ambient audio did not start:', e);
+    }
   }
 
   function stopAmbient() {
-    if (!audioCtx) return;
-    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.4);
-    setTimeout(() => {
-      try { osc.stop(); audioCtx.close(); } catch(e) {}
-      audioCtx = null; osc = null; gain = null;
-    }, 450);
+    if (!ambientAudio) return;
+    ambientAudio.pause();
   }
 
+  async function enableAmbient() {
+    await startAmbient();
+
+    if (soundButton) {
+      soundButton.setAttribute('aria-pressed', 'true');
+    }
+  }
+
+  function disableAmbient() {
+    stopAmbient();
+
+    if (soundButton) {
+      soundButton.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  // Пытаемся включить сразу
+  enableAmbient();
+
+  // Если браузер заблокировал autoplay — включаем после первого действия пользователя
+  ['click', 'mousemove', 'scroll', 'keydown', 'touchstart'].forEach((eventName) => {
+    window.addEventListener(eventName, enableAmbient, {
+      once: true,
+      passive: true
+    });
+  });
+
+  // Кнопка теперь только выключает/включает обратно
   if (soundButton) {
     soundButton.addEventListener('click', async () => {
       const active = soundButton.getAttribute('aria-pressed') === 'true';
+
       if (active) {
-        soundButton.setAttribute('aria-pressed', 'false');
-        stopAmbient();
+        disableAmbient();
       } else {
-        soundButton.setAttribute('aria-pressed', 'true');
-        startAmbient();
+        await enableAmbient();
       }
     });
   }
