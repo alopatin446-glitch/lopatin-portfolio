@@ -1125,3 +1125,92 @@ section {
   line-height: 1.03;
   letter-spacing: -0.045em;
 }
+
+.project-cta {
+  margin-top: 38px;
+}
+
+.project-cta__button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 28px 30px;
+
+  border-radius: 30px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, .08);
+
+  background:
+    radial-gradient(circle at top right,
+      rgba(201, 155, 105, .12),
+      transparent 42%),
+
+    linear-gradient(180deg,
+      rgba(255, 255, 255, .045),
+      rgba(255, 255, 255, .018));
+
+  backdrop-filter: blur(20px);
+
+  transition:
+    transform .45s ease,
+    border-color .45s ease,
+    background .45s ease,
+    box-shadow .45s ease;
+}
+
+.project-cta__button::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(120deg,
+      transparent 0%,
+      rgba(255, 255, 255, .04) 50%,
+      transparent 100%);
+
+  opacity: .4;
+  pointer-events: none;
+}
+
+.project-cta__button:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(201, 155, 105, .24);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, .45),
+    0 0 80px rgba(201, 155, 105, .08);
+}
+
+.project-cta__eyebrow {
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+
+  color: rgba(201, 155, 105, .78);
+}
+
+.project-cta__title {
+  font-size: clamp(24px, 2vw, 34px);
+  line-height: 1.04;
+  letter-spacing: -.04em;
+
+  font-weight: 700;
+
+  color: #f4efe7;
+
+  max-width: 720px;
+}
+
+.project-cta__meta {
+  font-size: 14px;
+  line-height: 1.6;
+
+  color: rgba(244, 239, 231, .48);
+}

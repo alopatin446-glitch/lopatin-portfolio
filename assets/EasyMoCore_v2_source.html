@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Easy Mo Core — Presentation 2026</title>
+<style>
+@font-face { font-family:'P'; src:url('file:///usr/share/fonts/truetype/google-fonts/Poppins-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'P'; src:url('file:///usr/share/fonts/truetype/google-fonts/Poppins-Medium.ttf'); font-weight:500; }
+@font-face { font-family:'P'; src:url('file:///usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'D'; src:url('file:///usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'); font-weight:400; }
+@font-face { font-family:'D'; src:url('file:///usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'); font-weight:700; }
+
+@page { size: 338.67mm 190.5mm; margin:0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1280px; background:#000; }
+
+:root {
+  --a:  #c9922a;
+  --al: #e8c47a;
+  --ad: rgba(201,146,42,0.18);
+  --w:  #f4efe7;
+  --wm: rgba(244,239,231,0.60);
+  --wl: rgba(244,239,231,0.32);
+  --wg: rgba(244,239,231,0.06);
+}
+
+.slide {
+  width:1280px; height:720px;
+  position:relative; overflow:hidden;
+  page-break-after:always; break-after:page;
+  font-family:'P','D',sans-serif; color:var(--w);
+}
+.slide:last-child { page-break-after:avoid; break-after:avoid; }
+
+/* ── atmospheric layers ───────────────── */
+.atm { position:absolute; inset:0; pointer-events:none; }
+.grain-svg {
+  position:absolute; inset:0; width:100%; height:100%;
+  z-index:98; pointer-events:none; opacity:0.042; mix-blend-mode:overlay;
+}
+.vign {
+  position:absolute; inset:0; z-index:97; pointer-events:none;
+  background: radial-gradient(ellipse 110% 110% at 50% 50%,
+    transparent 35%, rgba(0,0,0,0.48) 75%, rgba(0,0,0,0.72) 100%);
+}
+.vign-hard {
+  position:absolute; inset:0; z-index:97; pointer-events:none;
+  background: radial-gradient(ellipse 90% 90% at 50% 50%,
+    transparent 25%, rgba(0,0,0,0.60) 70%, rgba(0,0,0,0.85) 100%);
+}
+
+/* ── footer system ───────────────────── */
+.pg {
+  position:absolute; bottom:28px; right:44px;
+  font-size:10px; font-weight:400; color:var(--wl);
+  letter-spacing:0.18em; text-transform:uppercase;
+  font-family:'P',sans-serif; z-index:100;
+}
+.bfooter {
+  position:absolute; bottom:28px; left:44px;
+  font-size:10px; font-weight:500; color:var(--wl);
+  letter-spacing:0.22em; text-transform:uppercase;
+  font-family:'P',sans-serif; z-index:100;
+}
+.h-rule {
+  position:absolute; height:1px;
+  background:linear-gradient(90deg, rgba(201,146,42,0.55), rgba(201,146,42,0.12), transparent);
+}
+.label {
+  font-size:10px; font-weight:500; letter-spacing:0.30em;
+  text-transform:uppercase; color:var(--a); font-family:'P',sans-serif;
+}
+</style>
+</head>
+<body>
+
+
+
+<!-- ══════════════════════════════════════════════════════
+     01 — COVER
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#020201;">
+  <!-- atmospheric depth layers -->
+  <div class="atm" style="background:
+    radial-gradient(ellipse 700px 500px at 95% 95%, rgba(160,95,12,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 500px 400px at 105% 40%, rgba(201,146,42,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 400px at 15% 10%, rgba(8,6,3,0.90) 0%, transparent 70%);"></div>
+  <!-- vertical accent line right -->
+  <div style="position:absolute;right:220px;top:60px;width:1px;height:580px;background:linear-gradient(180deg,transparent,rgba(201,146,42,0.22),rgba(201,146,42,0.08),transparent);z-index:2;"></div>
+  <!-- large ambient bg number -->
+  <div style="position:absolute;right:-40px;top:-40px;font-size:460px;font-weight:700;color:rgba(201,146,42,0.025);letter-spacing:-0.06em;line-height:1;font-family:'P',sans-serif;pointer-events:none;z-index:1;">01</div>
+
+  <div class="vign" style="background:radial-gradient(ellipse 100% 110% at 30% 50%, transparent 30%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.65) 100%);"></div>
+  
+
+  <!-- main title block -->
+  <div style="position:absolute;left:72px;top:90px;z-index:10;">
+    <div style="font-size:118px;font-weight:700;color:#f4efe7;letter-spacing:-0.03em;line-height:0.98;font-family:'D',sans-serif;">EASY</div>
+    <div style="font-size:118px;font-weight:700;color:#f4efe7;letter-spacing:-0.03em;line-height:0.98;font-family:'D',sans-serif;margin-top:6px;">MO</div>
+    <div style="font-size:118px;font-weight:700;color:#f4efe7;letter-spacing:-0.03em;line-height:0.98;font-family:'D',sans-serif;margin-top:6px;">CORE</div>
+  </div>
+
+  <!-- separator -->
+  <div style="position:absolute;left:72px;top:472px;width:480px;height:1px;background:linear-gradient(90deg,rgba(201,146,42,0.80),rgba(201,146,42,0.20),transparent);z-index:10;"></div>
+
+  <!-- subtitle -->
+  <div style="position:absolute;left:72px;top:492px;font-size:18px;font-weight:400;color:rgba(244,239,231,0.64);font-family:'D',sans-serif;letter-spacing:0.02em;z-index:10;">ERP/CRM для производственно-монтажного бизнеса</div>
+
+  <!-- meta -->
+  <div style="position:absolute;left:72px;top:548px;font-size:11px;font-weight:400;color:rgba(244,239,231,0.28);letter-spacing:0.22em;text-transform:uppercase;font-family:'P',sans-serif;z-index:10;">Founder &amp; Partner Presentation &nbsp;·&nbsp; Антон Лопатин &nbsp;·&nbsp; 2026</div>
+
+  <!-- right decorative line + label -->
+  <div style="position:absolute;right:72px;bottom:58px;z-index:10;text-align:right;">
+    <div style="width:1px;height:90px;background:linear-gradient(180deg,transparent,rgba(201,146,42,0.35));margin-left:auto;margin-bottom:10px;"></div>
+    <div style="font-size:9px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(201,146,42,0.45);font-family:'P',sans-serif;">Confidential</div>
+  </div>
+  <!-- amber corner accent bottom-left -->
+  <div style="position:absolute;left:72px;bottom:36px;width:36px;height:2px;background:var(--a);z-index:10;"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     02 — THE PROBLEM (hero / impact)
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#020202;">
+  <!-- atmospheric: scattered light nodes, no center warmth = chaos feeling -->
+  <div class="atm" style="background:
+    radial-gradient(ellipse 300px 200px at 8% 30%, rgba(201,146,42,0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 200px 150px at 92% 70%, rgba(201,146,42,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 300px at 55% 85%, rgba(8,5,2,0.95) 0%, transparent 60%);"></div>
+  <!-- large ambient word -->
+  <div style="position:absolute;right:-60px;bottom:-60px;font-size:360px;font-weight:700;color:rgba(201,146,42,0.025);letter-spacing:-0.06em;line-height:1;font-family:'P',sans-serif;pointer-events:none;z-index:1;">ХАОС</div>
+  <div class="vign-hard"></div>
+  
+
+  <!-- headline -->
+  <div style="position:absolute;left:72px;top:60px;font-size:29px;font-weight:700;color:#f4efe7;max-width:700px;line-height:1.30;font-family:'D',sans-serif;z-index:10;">
+    Малый производственный бизнес держится<br>не на системе —&nbsp;<span style="color:var(--a);">на памяти людей</span>
+  </div>
+
+  <!-- chaos SVG map — cinematic scatter -->
+  <svg style="position:absolute;left:0;top:0;width:100%;height:100%;z-index:10;" viewBox="0 0 1280 720" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- broken connector lines -->
+    <line x1="175" y1="330" x2="290" y2="400" stroke="rgba(201,146,42,0.20)" stroke-width="1.2" stroke-dasharray="7 10"/>
+    <line x1="370" y1="400" x2="510" y2="310" stroke="rgba(201,146,42,0.14)" stroke-width="1.2" stroke-dasharray="4 14"/>
+    <line x1="600" y1="310" x2="720" y2="420" stroke="rgba(201,146,42,0.20)" stroke-width="1.2" stroke-dasharray="7 8"/>
+    <line x1="820" y1="420" x2="960" y2="310" stroke="rgba(201,146,42,0.12)" stroke-width="1.2" stroke-dasharray="3 16"/>
+    <line x1="1060" y1="310" x2="1180" y2="420" stroke="rgba(201,146,42,0.18)" stroke-width="1.2" stroke-dasharray="6 10"/>
+    <!-- glow dots at nodes -->
+    <circle cx="145" cy="320" r="3" fill="#c9922a" opacity="0.7"/>
+    <circle cx="330" cy="400" r="3" fill="#c9922a" opacity="0.5"/>
+    <circle cx="560" cy="308" r="3" fill="#c9922a" opacity="0.7"/>
+    <circle cx="770" cy="422" r="3" fill="#c9922a" opacity="0.5"/>
+    <circle cx="1020" cy="308" r="3" fill="#c9922a" opacity="0.7"/>
+    <circle cx="1200" cy="422" r="3" fill="#c9922a" opacity="0.45"/>
+  </svg>
+
+  <!-- scatter nodes -->
+  <div style="position:absolute;left:88px;top:298px;z-index:20;text-align:center;">
+    <div style="font-size:22px;font-weight:700;color:#f4efe7;letter-spacing:0.04em;font-family:'D',sans-serif;text-transform:uppercase;">Заявка</div>
+    <div style="font-size:11px;color:#7a5422;letter-spacing:0.10em;text-transform:uppercase;margin-top:6px;font-family:'D',sans-serif;">теряется</div>
+  </div>
+  <div style="position:absolute;left:268px;top:376px;z-index:20;text-align:center;">
+    <div style="font-size:22px;font-weight:700;color:rgba(244,239,231,0.75);letter-spacing:0.04em;font-family:'D',sans-serif;text-transform:uppercase;">Замер</div>
+    <div style="font-size:11px;color:#7a5422;letter-spacing:0.10em;text-transform:uppercase;margin-top:6px;font-family:'D',sans-serif;">в блокноте</div>
+  </div>
+  <div style="position:absolute;left:494px;top:283px;z-index:20;text-align:center;">
+    <div style="font-size:22px;font-weight:700;color:#f4efe7;letter-spacing:0.04em;font-family:'D',sans-serif;text-transform:uppercase;">Расчёт</div>
+    <div style="font-size:11px;color:#7a5422;letter-spacing:0.10em;text-transform:uppercase;margin-top:6px;font-family:'D',sans-serif;">на глаз</div>
+  </div>
+  <div style="position:absolute;left:674px;top:395px;z-index:20;text-align:center;">
+    <div style="font-size:18px;font-weight:700;color:rgba(244,239,231,0.75);letter-spacing:0.04em;font-family:'D',sans-serif;text-transform:uppercase;">Производство</div>
+    <div style="font-size:11px;color:#7a5422;letter-spacing:0.10em;text-transform:uppercase;margin-top:6px;font-family:'D',sans-serif;">ошибка</div>
+  </div>
+  <div style="position:absolute;left:942px;top:283px;z-index:20;text-align:center;">
+    <div style="font-size:22px;font-weight:700;color:#f4efe7;letter-spacing:0.04em;font-family:'D',sans-serif;text-transform:uppercase;">Монтаж</div>
+    <div style="font-size:11px;color:#7a5422;letter-spacing:0.10em;text-transform:uppercase;margin-top:6px;font-family:'D',sans-serif;">без плана</div>
+  </div>
+  <div style="position:absolute;left:1130px;top:395px;z-index:20;text-align:center;">
+    <div style="font-size:22px;font-weight:700;color:rgba(244,239,231,0.75);letter-spacing:0.04em;font-family:'D',sans-serif;text-transform:uppercase;">Деньги</div>
+    <div style="font-size:11px;color:#7a5422;letter-spacing:0.10em;text-transform:uppercase;margin-top:6px;font-family:'D',sans-serif;">неизвестно</div>
+  </div>
+
+  <!-- bottom statement -->
+  <div style="position:absolute;bottom:68px;left:72px;font-size:16px;font-weight:400;color:rgba(244,239,231,0.50);max-width:800px;line-height:1.65;font-family:'D',sans-serif;z-index:10;">
+    Руководитель управляет через чат и Excel — а не через систему.
+    Бизнес зависит от людей, а не от процесса.
+  </div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">02 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     03 — WHY CRM FAIL
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#030303;">
+  <div class="atm" style="background:
+    radial-gradient(ellipse 500px 500px at 80% 60%, rgba(201,146,42,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 400px 300px at 10% 80%, rgba(0,0,0,0.70) 0%, transparent 60%);"></div>
+  <div class="vign"></div>
+  
+
+  <!-- vertical divider -->
+  <div style="position:absolute;left:620px;top:155px;width:1px;height:490px;background:rgba(201,146,42,0.18);z-index:10;"></div>
+
+  <div style="position:absolute;left:72px;top:60px;font-size:28px;font-weight:700;color:#f4efe7;max-width:950px;line-height:1.3;font-family:'D',sans-serif;z-index:10;">
+    Универсальные CRM видят клиента.<br><span style="color:var(--a);">Easy Mo Core</span> видит производство.
+  </div>
+
+  <!-- column headers -->
+  <div style="position:absolute;left:72px;top:164px;font-size:10px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:rgba(244,239,231,0.40);font-family:'P',sans-serif;z-index:10;">Bitrix24 / amoCRM</div>
+  <div style="position:absolute;left:660px;top:164px;font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;z-index:10;">Easy Mo Core</div>
+
+  <!-- rows -->
+  <style>
+    .cr{position:absolute;left:72px;right:44px;display:flex;border-bottom:1px solid rgba(244,239,231,0.05);z-index:10;}
+    .cl{width:524px;padding:12px 0;font-size:14px;color:rgba(244,239,231,0.45);font-family:'D',sans-serif;display:flex;align-items:center;gap:10px;}
+    .cr2{margin-left:44px;flex:1;padding:12px 0;font-size:14px;font-weight:500;color:#f4efe7;font-family:'D',sans-serif;display:flex;align-items:center;gap:10px;}
+  </style>
+  <div class="cr" style="top:200px;"><div class="cl"><span style="color:#3a2a18;">—</span> Расчёт изделий по геометрии</div><div class="cr2"><span style="color:var(--a);font-weight:700;">✓</span> Автоматический, по размеру и материалу</div></div>
+  <div class="cr" style="top:248px;"><div class="cl"><span style="color:#3a2a18;">—</span> Оптимизатор раскроя</div><div class="cr2"><span style="color:var(--a);font-weight:700;">✓</span> CAD-level pipeline: рулоны и раскрой</div></div>
+  <div class="cr" style="top:296px;"><div class="cl"><span style="color:#3a2a18;">—</span> Себестоимость и прибыль заказа</div><div class="cr2"><span style="color:var(--a);font-weight:700;">✓</span> По каждой сделке, прозрачно</div></div>
+  <div class="cr" style="top:344px;"><div class="cl"><span style="color:#3a2a18;">—</span> Расчёт монтажа (бригада, ГСМ)</div><div class="cr2"><span style="color:var(--a);font-weight:700;">✓</span> Встроен в каждый заказ</div></div>
+  <div class="cr" style="top:392px;"><div class="cl"><span style="color:#3a2a18;">—</span> Защита исторических данных</div><div class="cr2"><span style="color:var(--a);font-weight:700;">✓</span> Snapshot/freeze — цены не пересчитываются</div></div>
+  <div class="cr" style="top:440px;"><div class="cl"><span style="color:#3a2a18;">—</span> Отраслевая специализация</div><div class="cr2"><span style="color:var(--a);font-weight:700;">✓</span> Создан только для этой логики</div></div>
+  <div class="cr" style="top:488px;border:none;"><div class="cl"><span style="color:#a06030;">⚠</span> Внедрение: 100–500 тыс. ₽ + интегратор</div><div class="cr2"><span style="color:var(--a);font-weight:700;">✓</span> Готово к работе из коробки</div></div>
+
+  <div style="position:absolute;bottom:56px;left:72px;font-size:11px;color:rgba(201,146,42,0.42);letter-spacing:0.14em;text-transform:uppercase;font-family:'P',sans-serif;z-index:10;">Vertical SaaS beats horizontal in every specialized niche</div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">03 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     04 — SOLUTION
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#030302;">
+  <div class="atm" style="background:
+    radial-gradient(ellipse 800px 200px at 50% 65%, rgba(201,146,42,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 300px at 90% 20%, rgba(201,146,42,0.05) 0%, transparent 55%);"></div>
+  <div class="vign"></div>
+  
+
+  <div style="position:absolute;left:72px;top:60px;font-size:32px;font-weight:700;color:#f4efe7;max-width:860px;line-height:1.28;font-family:'D',sans-serif;z-index:10;">
+    Операционная среда для бизнеса,<br>где <span style="color:var(--a);">заказ начинается с размера</span>
+  </div>
+  <div style="position:absolute;left:72px;top:168px;font-size:14px;font-weight:400;color:var(--wm);font-family:'D',sans-serif;z-index:10;letter-spacing:0.03em;">
+    Для компаний, у которых есть клиент, замер, расчёт, материал, производство, монтаж и деньги.
+  </div>
+
+  <!-- horizontal flow with timeline aesthetic -->
+  <svg style="position:absolute;left:72px;top:236px;width:1136px;height:200px;z-index:10;" viewBox="0 72 1136 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+    <!-- main timeline -->
+    <line x1="0" y1="170" x2="1136" y2="170" stroke="rgba(201,146,42,0.20)" stroke-width="1"/>
+    <!-- dots -->
+    <circle cx="88" cy="170" r="5" fill="#c9922a" opacity="0.85"/>
+    <circle cx="278" cy="170" r="5" fill="#c9922a" opacity="0.70"/>
+    <circle cx="468" cy="170" r="5" fill="#c9922a" opacity="0.70"/>
+    <circle cx="658" cy="170" r="5" fill="#c9922a" opacity="0.70"/>
+    <circle cx="848" cy="170" r="5" fill="#c9922a" opacity="0.70"/>
+    <circle cx="1038" cy="170" r="5" fill="#c9922a" opacity="0.70"/>
+    <!-- vertical tick lines -->
+    <line x1="88" y1="156" x2="88" y2="170" stroke="rgba(201,146,42,0.50)" stroke-width="1"/>
+    <line x1="278" y1="156" x2="278" y2="170" stroke="rgba(201,146,42,0.35)" stroke-width="1"/>
+    <line x1="468" y1="156" x2="468" y2="170" stroke="rgba(201,146,42,0.35)" stroke-width="1"/>
+    <line x1="658" y1="156" x2="658" y2="170" stroke="rgba(201,146,42,0.35)" stroke-width="1"/>
+    <line x1="848" y1="156" x2="848" y2="170" stroke="rgba(201,146,42,0.35)" stroke-width="1"/>
+    <line x1="1038" y1="156" x2="1038" y2="170" stroke="rgba(201,146,42,0.35)" stroke-width="1"/>
+  </svg>
+
+  <!-- flow labels -->
+  <style>
+    .fi{position:absolute;z-index:11;text-align:center;}
+    .fin{font-size:9px;font-weight:500;letter-spacing:0.22em;color:var(--a);font-family:'P',sans-serif;margin-bottom:10px;text-transform:uppercase;}
+    .fih{font-size:16px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;}
+    .fid{font-size:11px;color:var(--wm);font-family:'D',sans-serif;line-height:1.45;max-width:140px;margin:0 auto;}
+  </style>
+  <div class="fi" style="left:28px;top:252px;width:160px;"><div class="fin">01</div><div class="fih">Client</div><div class="fid">Карточка, история, статусы, файлы</div></div>
+  <div class="fi" style="left:198px;top:252px;width:160px;"><div class="fin">02</div><div class="fih">Calc</div><div class="fid">Геометрия, рулоны, прайс, себестоимость</div></div>
+  <div class="fi" style="left:388px;top:252px;width:160px;"><div class="fin">03</div><div class="fih">Production</div><div class="fid">Kanban, материалы, производство</div></div>
+  <div class="fi" style="left:578px;top:252px;width:160px;"><div class="fin">04</div><div class="fih">Mounting</div><div class="fid">Бригада, маршрут, календарь</div></div>
+  <div class="fi" style="left:768px;top:252px;width:160px;"><div class="fin">05</div><div class="fih">Finance</div><div class="fid">Прибыль, перерасход, P&amp;L заказа</div></div>
+  <div class="fi" style="left:958px;top:252px;width:160px;"><div class="fin">06</div><div class="fih">Archive</div><div class="fid">Snapshot, защита истории, поиск</div></div>
+
+  <div style="position:absolute;bottom:56px;right:72px;font-size:12px;color:rgba(201,146,42,0.40);letter-spacing:0.18em;text-transform:uppercase;font-family:'P',sans-serif;z-index:10;">Not a CRM — an operating system</div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">04 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     05 — PRODUCT TODAY
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#040403;">
+  <div class="atm" style="background:
+    radial-gradient(ellipse 600px 400px at 90% 80%, rgba(201,146,42,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 400px 300px at 5% 5%, rgba(0,0,0,0.80) 0%, transparent 55%);"></div>
+  <div class="vign"></div>
+  
+
+  <div style="position:absolute;left:72px;top:60px;font-size:42px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;z-index:10;">Что уже работает</div>
+  <div style="position:absolute;left:72px;top:124px;display:flex;align-items:center;gap:10px;z-index:10;">
+    <div style="width:7px;height:7px;border-radius:50%;background:var(--a);"></div>
+    <div style="font-size:11px;font-weight:500;color:var(--a);letter-spacing:0.28em;text-transform:uppercase;font-family:'P',sans-serif;">Production MVP</div>
+  </div>
+
+  <!-- 8 features: borderless grid with lines -->
+  <style>
+    .fg{position:absolute;left:72px;right:44px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(244,239,231,0.07);}
+    .fgi{padding:22px 16px 22px 0;border-bottom:1px solid rgba(244,239,231,0.07);border-right:1px solid rgba(244,239,231,0.05);}
+    .fgi:nth-child(4n){border-right:none;}
+    .fgbar{width:24px;height:2px;background:var(--a);margin-bottom:12px;}
+    .fgn{font-size:13px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;margin-bottom:5px;line-height:1.25;}
+    .fgd{font-size:11px;color:var(--wm);font-family:'D',sans-serif;line-height:1.45;}
+  </style>
+  <div class="fg" style="top:168px;z-index:10;">
+    <div class="fgi"><div class="fgbar"></div><div class="fgn">Карточка клиента</div><div class="fgd">История, замер, задачи, документы</div></div>
+    <div class="fgi"><div class="fgbar"></div><div class="fgn">Расчёт изделий</div><div class="fgd">Площадь, рулоны, раскрой — автоматически</div></div>
+    <div class="fgi"><div class="fgbar"></div><div class="fgn">Себестоимость и прибыль</div><div class="fgd">По каждому заказу, прозрачно</div></div>
+    <div class="fgi"><div class="fgbar"></div><div class="fgn">Прайс-лист</div><div class="fgd">Единый справочник цен для системы</div></div>
+    <div class="fgi" style="border-bottom:none;"><div class="fgbar"></div><div class="fgn">Kanban + Архив</div><div class="fgd">Переговоры → Замер → Производство → Готово</div></div>
+    <div class="fgi" style="border-bottom:none;"><div class="fgbar"></div><div class="fgn">Календарь монтажей</div><div class="fgd">Расписание бригад, конфликты</div></div>
+    <div class="fgi" style="border-bottom:none;"><div class="fgbar"></div><div class="fgn">Multi-tenant + S3</div><div class="fgd">Изолированные данные. Файловое хранилище</div></div>
+    <div class="fgi" style="border-bottom:none;"><div class="fgbar"></div><div class="fgn">Freeze Protection</div><div class="fgd">Закрытые сделки не пересчитываются</div></div>
+  </div>
+
+  <div style="position:absolute;bottom:52px;left:72px;font-size:10px;color:var(--wl);font-family:'P',sans-serif;letter-spacing:0.12em;z-index:10;">Next.js 16 · React 19 · TypeScript · Prisma · PostgreSQL · S3 &nbsp;|&nbsp; ~5 000 ₽/мес инфраструктура</div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">05 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     06 — TECHNICAL DEPTH (hero)
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#010101;">
+  <!-- deep engineering atmosphere: cold, precise, layered -->
+  <div class="atm" style="background:
+    radial-gradient(ellipse 600px 600px at -5% 50%, rgba(201,146,42,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse 400px 300px at 105% 30%, rgba(201,146,42,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 800px 400px at 50% 110%, rgba(0,0,0,0.90) 0%, transparent 60%);"></div>
+  <!-- subtle horizontal scan lines for depth -->
+  <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;opacity:0.06;" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="170" x2="1280" y2="170" stroke="#c9922a" stroke-width="0.5"/>
+    <line x1="0" y1="172" x2="1280" y2="172" stroke="#c9922a" stroke-width="0.5"/>
+    <line x1="0" y1="305" x2="1280" y2="305" stroke="#c9922a" stroke-width="0.5"/>
+    <line x1="0" y1="307" x2="1280" y2="307" stroke="#c9922a" stroke-width="0.5"/>
+    <line x1="0" y1="438" x2="1280" y2="438" stroke="#c9922a" stroke-width="0.5"/>
+    <line x1="0" y1="440" x2="1280" y2="440" stroke="#c9922a" stroke-width="0.5"/>
+  </svg>
+  <div class="vign-hard"></div>
+  
+
+  <div style="position:absolute;left:72px;top:56px;font-size:40px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;z-index:10;">
+    Внутри — не форма заявок.<br><span style="color:var(--a);">Расчётное ядро.</span>
+  </div>
+
+  <!-- architecture layers: left border = amber line -->
+  <style>
+    .al{position:absolute;left:72px;right:44px;z-index:10;display:flex;align-items:stretch;border-left:2px solid rgba(201,146,42,0.35);}
+    .aln{width:200px;flex-shrink:0;padding:18px 16px 18px 20px;display:flex;flex-direction:column;justify-content:center;}
+    .alt{font-size:9px;font-weight:500;letter-spacing:0.26em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;margin-bottom:3px;}
+    .als{font-size:9px;font-weight:400;letter-spacing:0.12em;color:var(--wl);font-family:'P',sans-serif;}
+    .ali{flex:1;border-left:1px solid rgba(244,239,231,0.05);padding:16px 0 16px 28px;display:flex;flex-wrap:wrap;gap:7px 18px;align-items:center;}
+    .at{font-size:13px;font-weight:400;color:var(--wm);font-family:'D',sans-serif;white-space:nowrap;}
+    .ath{font-size:13px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;white-space:nowrap;}
+    .alay{position:absolute;left:72px;right:44px;height:1px;background:rgba(244,239,231,0.04);z-index:10;}
+  </style>
+
+  <div class="al" style="top:168px;">
+    <div class="aln"><div class="alt">UI Layer</div><div class="als">Interface</div></div>
+    <div class="ali"><span class="at">Kanban Board</span><span class="at">·</span><span class="at">Client Cards</span><span class="at">·</span><span class="at">Mounting Calendar</span><span class="at">·</span><span class="at">Archive + Search</span><span class="at">·</span><span class="at">S3 Files</span></div>
+  </div>
+  <div class="alay" style="top:238px;"></div>
+  <div class="al" style="top:240px;">
+    <div class="aln"><div class="alt">Engine</div><div class="als">Calculation Core</div></div>
+    <div class="ali"><span class="ath">Geometry Engine</span><span class="at">·</span><span class="ath">Roll Optimizer</span><span class="at">·</span><span class="ath">Cost Calculator</span><span class="at">·</span><span class="ath">Mounting Logic</span><span class="at">·</span><span class="ath">Production Cost</span></div>
+  </div>
+  <div class="alay" style="top:310px;"></div>
+  <div class="al" style="top:312px;">
+    <div class="aln"><div class="alt">Data Layer</div><div class="als">Safety &amp; Storage</div></div>
+    <div class="ali"><span class="ath">Price Snapshot</span><span class="at">·</span><span class="ath">Freeze Protection</span><span class="at">·</span><span class="ath">Historical Safety</span><span class="at">·</span><span class="ath">Multi-tenant</span></div>
+  </div>
+
+  <!-- quote + doc metrics -->
+  <div style="position:absolute;bottom:60px;left:72px;right:44px;padding-top:22px;border-top:1px solid rgba(201,146,42,0.18);z-index:10;">
+    <div style="font-size:14px;font-style:italic;color:var(--wm);line-height:1.65;max-width:760px;font-family:'D',sans-serif;">
+      «Система проектировалась как операционная среда для расчёта и контроля производственного заказа — не как интерфейс поверх таблицы клиентов.»
+    </div>
+  </div>
+  <div style="position:absolute;bottom:58px;right:44px;text-align:right;z-index:10;">
+    <div style="font-size:30px;font-weight:700;color:var(--a);font-family:'P',sans-serif;line-height:1;">6 480</div>
+    <div style="font-size:9px;color:var(--wl);letter-spacing:0.18em;text-transform:uppercase;font-family:'P',sans-serif;">строк документации</div>
+  </div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">06 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     07 — WHY HARD TO COPY (manifesto / hero)
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#010101;">
+  <!-- maximum drama: strong side light from left -->
+  <div class="atm" style="background:
+    radial-gradient(ellipse 450px 700px at -8% 50%, rgba(180,110,15,0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 300px 400px at 105% 20%, rgba(201,146,42,0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 600px 300px at 50% 110%, rgba(0,0,0,0.95) 0%, transparent 50%);"></div>
+  <!-- large slash ghost element -->
+  <div style="position:absolute;right:-80px;top:-60px;font-size:600px;font-weight:700;color:rgba(244,239,231,0.012);line-height:0.85;font-family:'P',sans-serif;pointer-events:none;z-index:1;letter-spacing:-0.10em;">—</div>
+  <div class="vign-hard"></div>
+  
+
+  <!-- main manifesto typography — cinematic stagger -->
+  <div style="position:absolute;left:68px;top:96px;z-index:10;line-height:1.00;">
+    <div style="font-size:100px;font-weight:700;color:rgba(244,239,231,0.90);letter-spacing:-0.025em;font-family:'D',sans-serif;text-transform:uppercase;">КОД —</div>
+    <div style="font-size:100px;font-weight:700;color:var(--a);letter-spacing:-0.025em;font-family:'D',sans-serif;text-transform:uppercase;margin-left:140px;margin-top:4px;">НЕ</div>
+    <div style="font-size:100px;font-weight:700;color:rgba(244,239,231,0.22);letter-spacing:-0.025em;font-family:'D',sans-serif;text-transform:uppercase;margin-left:72px;margin-top:4px;">АКТИВ.</div>
+  </div>
+
+  <!-- right column: supporting points -->
+  <div style="position:absolute;right:60px;top:120px;width:320px;z-index:10;border-left:1px solid rgba(201,146,42,0.18);padding-left:28px;">
+    <div style="padding:14px 0;border-bottom:1px solid rgba(244,239,231,0.06);font-size:13px;color:var(--wm);line-height:1.5;font-family:'D',sans-serif;">Логика выросла из реального бизнеса — не из туториала</div>
+    <div style="padding:14px 0;border-bottom:1px solid rgba(244,239,231,0.06);font-size:13px;color:var(--wm);line-height:1.5;font-family:'D',sans-serif;">Ошибка в расчёте = реальные деньги клиента</div>
+    <div style="padding:14px 0;border-bottom:1px solid rgba(244,239,231,0.06);font-size:13px;color:var(--wm);line-height:1.5;font-family:'D',sans-serif;">Исторические заказы нельзя пересчитывать</div>
+    <div style="padding:14px 0;font-size:13px;color:var(--wm);line-height:1.5;font-family:'D',sans-serif;">Монтаж и производство связаны с финансами</div>
+  </div>
+
+  <!-- bottom statement — amber, horizontal rule above -->
+  <div style="position:absolute;bottom:58px;left:68px;right:44px;padding-top:20px;border-top:1px solid rgba(201,146,42,0.14);z-index:10;">
+    <div style="font-size:18px;font-weight:400;color:rgba(201,146,42,0.60);font-family:'D',sans-serif;letter-spacing:0.02em;">
+      CRM можно скопировать. Отраслевую боль — нельзя выдумать.
+    </div>
+  </div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">07 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     08 — MARKET NICHE
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#030303;">
+  <div class="atm" style="background:
+    radial-gradient(ellipse 500px 350px at 100% 100%, rgba(201,146,42,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 300px 200px at 0% 0%, rgba(0,0,0,0.75) 0%, transparent 55%);"></div>
+  <div class="vign"></div>
+  
+
+  <div style="position:absolute;left:72px;top:58px;font-size:42px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;z-index:10;">Первая ниша выбрана не случайно</div>
+  <div style="position:absolute;left:72px;top:120px;font-size:15px;font-weight:400;color:var(--a);letter-spacing:0.08em;font-family:'D',sans-serif;z-index:10;">Мягкие окна · ПВХ-шторы · Тенты · Натяжные конструкции</div>
+
+  <style>
+    .ri{display:flex;align-items:center;gap:0;padding:17px 0;border-bottom:1px solid rgba(244,239,231,0.07);}
+    .rin{width:34px;flex-shrink:0;font-size:11px;font-weight:500;color:var(--a);letter-spacing:0.1em;font-family:'P',sans-serif;}
+    .rit{width:290px;flex-shrink:0;font-size:16px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;}
+    .rid{flex:1;font-size:13px;color:var(--wm);line-height:1.4;font-family:'D',sans-serif;}
+  </style>
+  <div style="position:absolute;left:72px;right:44px;top:172px;z-index:10;">
+    <div class="ri"><div class="rin">01</div><div class="rit">Сложный расчёт</div><div class="rid">Геометрия, рулоны, раскрой — без системы менеджер ошибается ежедневно</div></div>
+    <div class="ri"><div class="rin">02</div><div class="rit">Сезонность + монтаж</div><div class="rid">Пиковые нагрузки требуют чёткого планирования бригад и календаря</div></div>
+    <div class="ri"><div class="rin">03</div><div class="rit">Нет готового решения</div><div class="rid">Вертикального SaaS для этой отрасли в России практически нет</div></div>
+    <div class="ri"><div class="rin">04</div><div class="rit">Реальный средний чек</div><div class="rid">Окупаемость подписки — с 1–2 сохранённых ошибок расчёта в месяц</div></div>
+    <div class="ri" style="border:none;"><div class="rin">05</div><div class="rit">Founder-market fit</div><div class="rid">Основатель 3+ лет работал внутри этого бизнеса — логика выверена практикой</div></div>
+  </div>
+
+  <div style="position:absolute;bottom:52px;left:72px;font-size:10px;color:var(--wl);font-family:'D',sans-serif;letter-spacing:0.04em;z-index:10;">* Рынок CRM России: 32 млрд ₽, +15% г/г (infullbroker.ru, 2025–2026). Число компаний в нише — оценка основателя.</div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">08 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     09 — BUSINESS MODEL
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#030303;">
+  <div class="atm" style="background:
+    radial-gradient(ellipse 500px 400px at 55% 95%, rgba(201,146,42,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 300px 200px at 98% 5%, rgba(201,146,42,0.04) 0%, transparent 55%);"></div>
+  <div class="vign"></div>
+  
+
+  <div style="position:absolute;left:72px;top:58px;font-size:42px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;z-index:10;">SaaS · Внедрение · Сопровождение</div>
+
+  <!-- 4 tier bands — not cards -->
+  <div style="position:absolute;left:72px;right:44px;top:162px;display:flex;gap:18px;z-index:10;">
+    <style>
+      .tb{flex:1;padding:28px 22px;border:1px solid rgba(244,239,231,0.08);}
+      .tb.hi{border-color:rgba(201,146,42,0.38);background:rgba(201,146,42,0.04);}
+      .tb.hi .tbn{color:var(--a);}
+      .tba{position:relative;top:0;left:0;right:0;display:none;height:2px;background:var(--a);margin:0 -22px 20px -22px;}
+      .tb.hi .tba{display:block;}
+      .tbn{font-size:10px;font-weight:500;letter-spacing:0.26em;text-transform:uppercase;color:var(--wm);font-family:'P',sans-serif;margin-bottom:18px;}
+      .tbp{font-size:30px;font-weight:700;color:#f4efe7;font-family:'P',sans-serif;line-height:1;margin-bottom:6px;}
+      .tbr{font-size:10px;color:var(--wl);margin-bottom:18px;font-family:'D',sans-serif;}
+      .tbd{font-size:12px;color:var(--wm);line-height:1.6;font-family:'D',sans-serif;}
+    </style>
+    <div class="tb"><div class="tba"></div><div class="tbn">Старт</div><div class="tbp">2 990</div><div class="tbr">₽ / месяц</div><div class="tbd">Малая компания<br>до 3 пользователей<br>Расчёты, клиенты, Kanban</div></div>
+    <div class="tb hi"><div class="tba"></div><div class="tbn">Бизнес</div><div class="tbp">6 990</div><div class="tbr">₽ / месяц</div><div class="tbd">Средняя компания<br>до 10 пользователей<br>+ монтаж, архив, файлы</div></div>
+    <div class="tb"><div class="tba"></div><div class="tbn">Про</div><div class="tbp">14 990</div><div class="tbr">₽ / месяц</div><div class="tbd">Крупная компания<br>Аналитика, склад<br>Расширенные права</div></div>
+    <div class="tb"><div class="tba"></div><div class="tbn">Enterprise</div><div class="tbp">от 30 000</div><div class="tbr">₽ / месяц</div><div class="tbd">Франшизы, сети<br>Кастомизация<br>Выделенная поддержка</div></div>
+  </div>
+
+  <div style="position:absolute;bottom:60px;left:72px;right:44px;display:flex;gap:40px;padding-top:18px;border-top:1px solid rgba(244,239,231,0.06);z-index:10;">
+    <div style="display:flex;align-items:center;gap:10px;"><div style="width:3px;height:3px;border-radius:50%;background:var(--a);flex-shrink:0;"></div><div style="font-size:13px;color:var(--wm);font-family:'D',sans-serif;">Внедрение под ключ: настройка, обучение, миграция — 50–150 тыс. ₽</div></div>
+    <div style="display:flex;align-items:center;gap:10px;"><div style="width:3px;height:3px;border-radius:50%;background:var(--a);flex-shrink:0;"></div><div style="font-size:13px;color:var(--wm);font-family:'D',sans-serif;">Партнёрские продажи: франшизы, региональные сети, B2B-партнёры</div></div>
+  </div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">09 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     10 — FINANCIAL POTENTIAL
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#020202;">
+  <div class="atm" style="background:
+    radial-gradient(ellipse 450px 350px at 35% 55%, rgba(201,146,42,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 300px 250px at 90% 15%, rgba(201,146,42,0.05) 0%, transparent 55%);"></div>
+  <div class="vign"></div>
+  
+
+  <div style="position:absolute;left:72px;top:56px;font-size:36px;font-weight:700;color:#f4efe7;max-width:680px;line-height:1.28;font-family:'D',sans-serif;z-index:10;">Даже узкая ниша даёт<br>устойчивый SaaS-бизнес</div>
+
+  <!-- chart SVG -->
+  <svg style="position:absolute;left:72px;top:168px;z-index:10;" width="580" height="240" viewBox="0 0 580 240" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="200" x2="580" y2="200" stroke="rgba(244,239,231,0.06)" stroke-width="1"/>
+    <line x1="0" y1="150" x2="580" y2="150" stroke="rgba(244,239,231,0.04)" stroke-width="1"/>
+    <line x1="0" y1="100" x2="580" y2="100" stroke="rgba(244,239,231,0.04)" stroke-width="1"/>
+    <line x1="0" y1="50"  x2="580" y2="50"  stroke="rgba(244,239,231,0.04)" stroke-width="1"/>
+    <defs>
+      <linearGradient id="cf" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#c9922a" stop-opacity="0.22"/>
+        <stop offset="100%" stop-color="#c9922a" stop-opacity="0.00"/>
+      </linearGradient>
+    </defs>
+    <polygon points="40,192 165,158 320,112 530,18 530,200 40,200" fill="url(#cf)"/>
+    <polyline points="40,192 165,158 320,112 530,18" fill="none" stroke="#c9922a" stroke-width="2.2"/>
+    <circle cx="40"  cy="192" r="4.5" fill="#c9922a"/>
+    <circle cx="165" cy="158" r="4.5" fill="#c9922a"/>
+    <circle cx="320" cy="112" r="4.5" fill="#c9922a"/>
+    <circle cx="530" cy="18"  r="4.5" fill="#c9922a"/>
+    <text x="40"  y="220" text-anchor="middle" fill="rgba(244,239,231,0.38)" font-size="11" font-family="sans-serif">10</text>
+    <text x="165" y="220" text-anchor="middle" fill="rgba(244,239,231,0.38)" font-size="11" font-family="sans-serif">50</text>
+    <text x="320" y="220" text-anchor="middle" fill="rgba(244,239,231,0.38)" font-size="11" font-family="sans-serif">100</text>
+    <text x="530" y="220" text-anchor="middle" fill="rgba(244,239,231,0.38)" font-size="11" font-family="sans-serif">300</text>
+    <text x="285" y="237" text-anchor="middle" fill="rgba(201,146,42,0.40)" font-size="10" font-family="sans-serif" letter-spacing="2">клиентов</text>
+  </svg>
+
+  <!-- table -->
+  <div style="position:absolute;right:44px;top:150px;width:490px;z-index:10;">
+    <div style="display:flex;border-bottom:1px solid rgba(201,146,42,0.28);padding-bottom:10px;margin-bottom:2px;">
+      <div style="width:80px;font-size:9px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;">Кл.</div>
+      <div style="width:120px;font-size:9px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;">ARPU</div>
+      <div style="width:150px;font-size:9px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;">MRR</div>
+      <div style="flex:1;font-size:9px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;">ARR</div>
+    </div>
+    <style>
+      .tr{display:flex;padding:14px 0;border-bottom:1px solid rgba(244,239,231,0.06);}
+      .tr:last-child{border:none;}
+      .td{width:80px;font-size:15px;color:var(--wm);font-family:'D',sans-serif;}
+      .td2{width:120px;font-size:15px;color:var(--wm);font-family:'D',sans-serif;}
+      .td3{width:150px;font-size:15px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;}
+      .td4{flex:1;font-size:15px;font-weight:700;color:var(--wm);font-family:'D',sans-serif;}
+      .hi4{color:var(--a);font-family:'P',sans-serif;}
+    </style>
+    <div class="tr"><div class="td">10</div><div class="td2">5 000 ₽</div><div class="td3">50 000 ₽</div><div class="td4">600 000 ₽</div></div>
+    <div class="tr"><div class="td">50</div><div class="td2">7 000 ₽</div><div class="td3">350 000 ₽</div><div class="td4">4,2 млн ₽</div></div>
+    <div class="tr"><div class="td">100</div><div class="td2">8 000 ₽</div><div class="td3">800 000 ₽</div><div class="td4 hi4">9,6 млн ₽</div></div>
+    <div class="tr"><div class="td">300</div><div class="td2">10 000 ₽</div><div class="td3">3 000 000 ₽</div><div class="td4 hi4">36 млн ₽</div></div>
+  </div>
+
+  <div style="position:absolute;bottom:54px;left:72px;font-size:11px;color:var(--wl);font-family:'D',sans-serif;z-index:10;">⚑ Сценарии, не прогноз. Зависят от retention, скорости привлечения и конкурентной среды.</div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">10 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     11 — ROADMAP
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#030303;">
+  <div class="atm" style="background:
+    radial-gradient(ellipse 300px 400px at -5% 50%, rgba(201,146,42,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 500px 300px at 110% 50%, rgba(201,146,42,0.05) 0%, transparent 55%);"></div>
+  <div class="vign"></div>
+  
+
+  <div style="position:absolute;left:72px;top:56px;font-size:42px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;z-index:10;">От Production MVP к AI-ERP платформе</div>
+
+  <!-- timeline track -->
+  <div style="position:absolute;left:72px;right:44px;top:196px;height:2px;background:rgba(244,239,231,0.08);z-index:10;">
+    <div style="height:100%;width:190px;background:linear-gradient(90deg,var(--a),rgba(201,146,42,0.30));"></div>
+  </div>
+
+  <!-- current marker -->
+  <div style="position:absolute;left:64px;top:164px;font-size:9px;color:var(--a);letter-spacing:0.18em;text-transform:uppercase;font-family:'P',sans-serif;z-index:10;">← сейчас</div>
+
+  <!-- 7 timeline items -->
+  <style>
+    .tli{position:absolute;top:187px;z-index:11;display:flex;flex-direction:column;align-items:center;}
+    .tld{width:18px;height:18px;border-radius:50%;border:1px solid rgba(201,146,42,0.35);background:#030303;}
+    .tld.done{background:#1a1006;border-color:rgba(201,146,42,0.70);}
+    .tld.now{background:var(--a);border-color:var(--a);}
+    .tlc{position:absolute;top:28px;width:148px;text-align:center;}
+    .tln{font-size:9px;font-weight:500;color:var(--a);letter-spacing:0.2em;font-family:'P',sans-serif;margin-bottom:5px;}
+    .tlt{font-size:13px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;margin-bottom:6px;line-height:1.25;}
+    .tls{font-size:11px;color:var(--wm);line-height:1.5;font-family:'D',sans-serif;}
+  </style>
+  <div class="tli" style="left:72px;"><div class="tld now"></div><div class="tlc" style="left:-46px;"><div class="tln">01</div><div class="tlt">Стабилизация</div><div class="tls">Баги, индексы<br>Валидация</div></div></div>
+  <div class="tli" style="left:228px;"><div class="tld"></div><div class="tlc" style="left:-46px;"><div class="tln">02</div><div class="tlt">Нормализация</div><div class="tls">OrderItem<br>StatusHistory</div></div></div>
+  <div class="tli" style="left:384px;"><div class="tld"></div><div class="tlc" style="left:-46px;"><div class="tln">03</div><div class="tlt">Финансы</div><div class="tls">Optimizer → P&amp;L<br>Точная прибыль</div></div></div>
+  <div class="tli" style="left:540px;"><div class="tld"></div><div class="tlc" style="left:-46px;"><div class="tln">04</div><div class="tlt">Realtime</div><div class="tls">SSE уведомления<br>Активность</div></div></div>
+  <div class="tli" style="left:696px;"><div class="tld"></div><div class="tlc" style="left:-46px;"><div class="tln">05</div><div class="tlt">CRM Scale</div><div class="tls">RBAC, задачи<br>Публичный API</div></div></div>
+  <div class="tli" style="left:852px;"><div class="tld"></div><div class="tlc" style="left:-46px;"><div class="tln">06</div><div class="tlt">ERP Scale</div><div class="tls">Склад, инвентарь<br>Задания произв.</div></div></div>
+  <div class="tli" style="left:1008px;"><div class="tld"></div><div class="tlc" style="left:-46px;"><div class="tln">07</div><div class="tlt">Platform / AI</div><div class="tls">Formula Admin<br>AI-ассистент</div></div></div>
+
+  <div style="position:absolute;bottom:58px;left:72px;font-size:14px;color:var(--wm);font-family:'D',sans-serif;z-index:10;">
+    Этапы 1–2 с партнёром: <strong style="color:var(--a);">3–6 месяцев → первые платящие клиенты.</strong> Этапы 5–7 — командная работа 12–24 мес.
+  </div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">11 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     12 — TRANSPARENCY
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#030303;">
+  <div class="atm" style="background:
+    radial-gradient(ellipse 400px 300px at 50% 100%, rgba(201,146,42,0.06) 0%, transparent 55%);"></div>
+  <div class="vign"></div>
+  
+
+  <div style="position:absolute;left:72px;top:56px;font-size:36px;font-weight:700;color:#f4efe7;max-width:700px;line-height:1.3;font-family:'D',sans-serif;z-index:10;">
+    Проект не скрывает долги —<br><span style="color:var(--a);">он управляет ими</span>
+  </div>
+
+  <!-- 4 category bands -->
+  <div style="position:absolute;left:72px;right:44px;top:182px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(244,239,231,0.05);z-index:10;">
+    <div style="background:#030303;padding:26px 22px;">
+      <div style="font-size:9px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#c0392b;font-family:'P',sans-serif;margin-bottom:12px;">🔴 Critical</div>
+      <div style="font-size:50px;font-weight:700;color:#c0392b;font-family:'P',sans-serif;line-height:1;margin-bottom:8px;">7</div>
+      <div style="font-size:14px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;margin-bottom:5px;">Критичные</div>
+      <div style="font-size:11px;color:var(--wm);font-family:'D',sans-serif;line-height:1.5;">Защита сохранения, статус заказа, поиск в архиве</div>
+    </div>
+    <div style="background:#030303;padding:26px 22px;">
+      <div style="font-size:9px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#e67e22;font-family:'P',sans-serif;margin-bottom:12px;">🟡 High</div>
+      <div style="font-size:50px;font-weight:700;color:#e67e22;font-family:'P',sans-serif;line-height:1;margin-bottom:8px;">23</div>
+      <div style="font-size:14px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;margin-bottom:5px;">Высокий приоритет</div>
+      <div style="font-size:11px;color:var(--wm);font-family:'D',sans-serif;line-height:1.5;">Пагинация, лимит файлов, дашборд, права</div>
+    </div>
+    <div style="background:#030303;padding:26px 22px;">
+      <div style="font-size:9px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,146,42,0.80);font-family:'P',sans-serif;margin-bottom:12px;">🔵 Roadmap</div>
+      <div style="font-size:50px;font-weight:700;color:rgba(201,146,42,0.80);font-family:'P',sans-serif;line-height:1;margin-bottom:8px;">28</div>
+      <div style="font-size:14px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;margin-bottom:5px;">Следующие этапы</div>
+      <div style="font-size:11px;color:var(--wm);font-family:'D',sans-serif;line-height:1.5;">OrderItem, EventLog, Inventory-модели</div>
+    </div>
+    <div style="background:#030303;padding:26px 22px;">
+      <div style="font-size:9px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:rgba(244,239,231,0.32);font-family:'P',sans-serif;margin-bottom:12px;">⚪ Tech Debt</div>
+      <div style="font-size:50px;font-weight:700;color:rgba(244,239,231,0.18);font-family:'P',sans-serif;line-height:1;margin-bottom:8px;">~56</div>
+      <div style="font-size:14px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;margin-bottom:5px;">Технический долг</div>
+      <div style="font-size:11px;color:var(--wm);font-family:'D',sans-serif;line-height:1.5;">CSS-токены, оптимизация, мёртвый код</div>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:56px;left:72px;right:44px;padding-top:18px;border-top:1px solid rgba(201,146,42,0.14);z-index:10;display:flex;justify-content:space-between;align-items:flex-end;">
+    <div style="font-size:15px;font-style:italic;color:var(--wm);font-family:'D',sans-serif;">«Мы знаем, что нужно чинить. Это лучше, чем иллюзия готовности.»</div>
+    <div style="font-size:10px;color:var(--wl);font-family:'P',sans-serif;letter-spacing:0.08em;text-align:right;flex-shrink:0;margin-left:24px;">Engineering Map V4 · Bug Register · Governance Pack</div>
+  </div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">12 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     13 — FOUNDER (hero / intimate)
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#020202;">
+  <!-- intimate warm light from right — where the quote lives -->
+  <div class="atm" style="background:
+    radial-gradient(ellipse 550px 600px at 105% 50%, rgba(180,110,15,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 350px 350px at -10% 30%, rgba(0,0,0,0.85) 0%, transparent 55%),
+    radial-gradient(ellipse 600px 300px at 50% 110%, rgba(0,0,0,0.90) 0%, transparent 50%);"></div>
+  <!-- thin vertical line separating text from quote -->
+  <div style="position:absolute;left:640px;top:100px;width:1px;height:500px;background:linear-gradient(180deg,transparent,rgba(201,146,42,0.22),rgba(201,146,42,0.15),transparent);z-index:5;"></div>
+  <div class="vign-hard"></div>
+  
+
+  <!-- label -->
+  <div style="position:absolute;left:72px;top:60px;font-size:10px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;z-index:10;">Founder — Market Fit</div>
+
+  <!-- title -->
+  <div style="position:absolute;left:72px;top:102px;font-size:31px;font-weight:700;color:#f4efe7;max-width:540px;line-height:1.32;font-family:'D',sans-serif;z-index:10;">
+    Основатель вышел из той проблемы, которую решает продукт
+  </div>
+
+  <!-- body -->
+  <div style="position:absolute;left:72px;top:228px;max-width:530px;font-size:16px;font-weight:400;color:var(--wm);line-height:1.78;font-family:'D',sans-serif;z-index:10;">
+    Антон не пришёл из IT-теории. Он работал внутри продаж,
+    расчётов, монтажей, производства и операционного хаоса
+    реального малого бизнеса — несколько лет, каждый день.<br><br>
+    Именно поэтому Easy Mo Core проектируется не как «CRM для всех»,
+    а как система, которая понимает реальную работу изнутри.
+  </div>
+
+  <!-- cinematic quote block — right side -->
+  <div style="position:absolute;right:60px;top:140px;width:480px;padding:40px 44px;border-left:3px solid var(--a);background:rgba(201,146,42,0.04);z-index:10;">
+    <div style="font-size:27px;font-weight:700;font-style:italic;color:#f4efe7;line-height:1.48;font-family:'D',sans-serif;">«Я не угадываю<br>боль рынка.<br>Я из неё вышел.»</div>
+    <div style="margin-top:24px;font-size:11px;font-weight:400;color:var(--a);letter-spacing:0.14em;font-family:'P',sans-serif;">— Антон Лопатин, основатель</div>
+  </div>
+
+  <!-- bottom tag -->
+  <div style="position:absolute;bottom:60px;left:72px;font-size:12px;font-weight:500;color:var(--wl);letter-spacing:0.18em;text-transform:uppercase;font-family:'P',sans-serif;z-index:10;">3+ лет в индустрии &nbsp;·&nbsp; <span style="color:var(--a);">Production founder</span> &nbsp;·&nbsp; Новокузнецк</div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">13 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     14 — WHO WE NEED
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#030303;">
+  <div class="atm" style="background:
+    radial-gradient(ellipse 500px 400px at 100% 80%, rgba(201,146,42,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 300px 200px at 5% 5%, rgba(0,0,0,0.75) 0%, transparent 55%);"></div>
+  <div class="vign"></div>
+  
+
+  <div style="position:absolute;left:72px;top:56px;font-size:42px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;z-index:10;">Кого проект ищет сейчас</div>
+
+  <!-- role list with column headers -->
+  <div style="position:absolute;left:72px;right:44px;top:152px;z-index:10;">
+    <div style="display:flex;padding:0 0 11px 34px;border-bottom:1px solid rgba(201,146,42,0.20);">
+      <div style="width:290px;font-size:9px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;">Роль</div>
+      <div style="flex:1;padding:0 20px;font-size:9px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;">Вклад в продукт</div>
+      <div style="width:220px;font-size:9px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;text-align:right;">Что получает</div>
+    </div>
+    <style>
+      .rw{display:flex;align-items:center;padding:15px 0;border-bottom:1px solid rgba(244,239,231,0.07);}
+      .rw:last-child{border:none;}
+      .rwn{width:34px;font-size:11px;font-weight:500;color:var(--a);font-family:'P',sans-serif;letter-spacing:0.10em;flex-shrink:0;}
+      .rwt{width:256px;font-size:16px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;flex-shrink:0;}
+      .rwd{flex:1;padding:0 20px;font-size:13px;color:var(--wm);font-family:'D',sans-serif;line-height:1.4;}
+      .rwr{width:220px;font-size:12px;font-weight:500;color:var(--a);font-family:'D',sans-serif;text-align:right;flex-shrink:0;}
+    </style>
+    <div class="rw"><div class="rwn">01</div><div class="rwt">UI/UX Designer</div><div class="rwd">Design System, лендинг, onboarding-flow, маркетинговые материалы</div><div class="rwr">Портфолио в B2B SaaS + доля</div></div>
+    <div class="rw"><div class="rwn">02</div><div class="rwt">Fullstack / Backend Dev</div><div class="rwd">Этапы 2–4 Roadmap: нормализация, realtime, публичный API</div><div class="rwr">Production ERP + доля</div></div>
+    <div class="rw"><div class="rwn">03</div><div class="rwt">Marketing / Growth</div><div class="rwd">Лендинг, воронка, каналы, пилоты, партнёрства с франшизами</div><div class="rwr">Доля + % от выручки</div></div>
+    <div class="rw"><div class="rwn">04</div><div class="rwt">Sales / BizDev</div><div class="rwd">Outreach, демо, переговоры, работа с сетями и партнёрами</div><div class="rwr">% с продаж + доля</div></div>
+    <div class="rw"><div class="rwn">05</div><div class="rwt">Investor / Partner</div><div class="rwd">Ресурс для ускорения: маркетинг, команда, инфраструктура</div><div class="rwr">Доля при мин. оценке</div></div>
+  </div>
+
+  <div style="position:absolute;bottom:56px;left:72px;font-size:11px;color:rgba(244,239,231,0.30);font-family:'D',sans-serif;z-index:10;">Партнёрство: вклад компетенцией в обмен на долю · Vesting · Испытательный период 1–3 мес.</div>
+  <div class="bfooter">Easy Mo Core</div>
+  <div class="pg">14 / 15</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     15 — FINAL CTA (hero / emotional)
+══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#020201;">
+  <!-- centered warm glow — invitation, hope -->
+  <div class="atm" style="background:
+    radial-gradient(ellipse 700px 500px at 50% 50%, rgba(160,95,12,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 400px 400px at 20% 20%, rgba(0,0,0,0.70) 0%, transparent 55%),
+    radial-gradient(ellipse 400px 400px at 80% 80%, rgba(0,0,0,0.70) 0%, transparent 55%);"></div>
+  <div class="vign-hard"></div>
+  
+
+  <!-- label -->
+  <div style="position:absolute;left:72px;top:58px;font-size:10px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;z-index:10;">Последнее слово</div>
+
+  <!-- main statement — left column -->
+  <div style="position:absolute;left:72px;top:100px;font-size:40px;font-weight:700;color:#f4efe7;max-width:640px;line-height:1.25;font-family:'D',sans-serif;z-index:10;">
+    Войти сейчас — значит<br>войти до того, как<br>проект стал очевидным.
+  </div>
+
+  <!-- body text -->
+  <div style="position:absolute;left:72px;top:316px;font-size:15px;font-weight:400;color:var(--wm);max-width:560px;line-height:1.78;font-family:'D',sans-serif;z-index:10;">
+    Easy Mo Core уже существует. Есть код, расчётная логика,
+    архитектура, документация и понимание рынка.<br><br>
+    Следующий шаг — не придумать продукт.<br>
+    Вывести его к первым платящим компаниям.
+  </div>
+
+  <!-- contact panel — right side, OS-style -->
+  <div style="position:absolute;right:60px;top:136px;width:380px;z-index:10;">
+    <div style="border:1px solid rgba(201,146,42,0.28);padding:36px 38px;background:rgba(12,8,3,0.60);">
+      <div style="font-size:9px;font-weight:500;letter-spacing:0.30em;text-transform:uppercase;color:var(--a);font-family:'P',sans-serif;margin-bottom:22px;">Связаться с Антоном</div>
+      <div style="font-size:21px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;margin-bottom:24px;">Антон Лопатин</div>
+      <!-- contact rows -->
+      <div style="padding:12px 0;border-bottom:1px solid rgba(244,239,231,0.07);display:flex;gap:16px;align-items:center;">
+        <div style="font-size:9px;font-weight:500;letter-spacing:0.20em;text-transform:uppercase;color:var(--a);width:56px;flex-shrink:0;font-family:'P',sans-serif;">TG</div>
+        <div style="font-size:15px;color:#f4efe7;font-family:'D',sans-serif;">@alopatin446</div>
+      </div>
+      <div style="padding:12px 0;border-bottom:1px solid rgba(244,239,231,0.07);display:flex;gap:16px;align-items:center;">
+        <div style="font-size:9px;font-weight:500;letter-spacing:0.20em;text-transform:uppercase;color:var(--a);width:56px;flex-shrink:0;font-family:'P',sans-serif;">Phone</div>
+        <div style="font-size:15px;color:#f4efe7;font-family:'D',sans-serif;">+7 (913) 411-93-41</div>
+      </div>
+      <div style="padding:12px 0;display:flex;gap:16px;align-items:center;">
+        <div style="font-size:9px;font-weight:500;letter-spacing:0.20em;text-transform:uppercase;color:var(--a);width:56px;flex-shrink:0;font-family:'P',sans-serif;">Email</div>
+        <div style="font-size:14px;color:rgba(244,239,231,0.80);font-family:'D',sans-serif;">alopatin446@gmail.com</div>
+      </div>
+    </div>
+    <!-- brand mark below contact -->
+    <div style="margin-top:18px;text-align:right;">
+      <div style="font-size:18px;font-weight:700;color:#f4efe7;font-family:'D',sans-serif;letter-spacing:0.04em;">EASY MO CORE</div>
+      <div style="font-size:9px;color:rgba(201,146,42,0.50);letter-spacing:0.20em;text-transform:uppercase;font-family:'P',sans-serif;margin-top:4px;">ERP/CRM for production chaos</div>
+    </div>
+  </div>
+
+  <!-- disclaimer -->
+  <div style="position:absolute;bottom:36px;left:72px;right:44px;font-size:10px;color:rgba(244,239,231,0.22);font-family:'D',sans-serif;line-height:1.55;max-width:840px;z-index:10;">
+    Материал основан на документации проекта и оценках основателя. Финансовые сценарии — гипотезы, не гарантия результата. Источники: infullbroker.ru, rechka.ai, artean.ru (2025–2026).
+  </div>
+</div>
+
+</body>
+</html>
